@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-//import MainRoute from "routes/MainRoute";
+import LoginRoute from "routes/LoginRoute";
+import PainelRoute from "routes/PainelRoute";
+import UsersRoute from "routes/UsersRoute";
 import { useHistory } from 'react-router';
 import 'assets/css/general.css';
 
@@ -13,19 +15,37 @@ import "moment/locale/pt-BR";
 moment.locale("pt-BR");
 
 import { BrowserRouter as Router, Route, Link, HashRouter, Switch} from "react-router-dom";
+import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+
+const theme = createTheme({
+   palette: {
+      /*primary: pink,
+      secondary: pink,*/
+      primary: {
+         light: '#f47b9b',
+          main: '#f26389',
+          dark: '#f04b77',
+          contrastText: '#fff'
+      }
+   }
+});
 
 class SiteRouter extends React.Component {
 
    render() {
       return <HashRouter>
                <React.Fragment>
-                  <MuiPickersUtilsProvider utils={MomentUtils} locale='pt-BR'>
-               		 <div id="app">
-               		 	<Switch>
-                           {/*<Route path="/" component={MainRoute} />*/}
-                     	</Switch>
-                     </div>
-                  </MuiPickersUtilsProvider>
+                  <ThemeProvider theme={theme}>
+                     <MuiPickersUtilsProvider utils={MomentUtils} locale='pt-BR'>
+                  		 <div id="app">
+                  		 	<Switch>
+                              <Route path="/" exact component={LoginRoute} />
+                              <Route path="/painel" exact component={PainelRoute} />
+                              <Route path="/usuarios" exact component={UsersRoute} />
+                        	</Switch>
+                        </div>
+                     </MuiPickersUtilsProvider>
+                  </ThemeProvider>
                </React.Fragment>
             </HashRouter>
    }

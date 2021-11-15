@@ -62,6 +62,6 @@ module.exports = {
     "target": "web",
     "devServer": {
         "contentBase": __dirname+'/static',
-        "port": 80
+        "port": 8081
     },
 }
