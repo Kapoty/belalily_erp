@@ -23,11 +23,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Button from '@material-ui/core/Button';
-import AddUserDialog from '../components/AddUserDialog';
+import AddProfileDialog from '../components/AddProfileDialog';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import Grid from '@material-ui/core/Grid';
-import EditUserDialog from '../components/EditUserDialog';
-import ChangeUserPasswordDialog from '../components/ChangeUserPasswordDialog';
+import EditProfileDialog from '../components/EditProfileDialog';
 
 const useStyles = (theme) => ({
 	root: {
@@ -54,57 +53,24 @@ const useStyles = (theme) => ({
 	}
 });
 
-class UsersRoute extends React.Component {
+class ProfilesRoute extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			usersLoaded: false, users: [],
 			profilesLoaded: false, profiles: [], profilesById: {},
 			trying: false,
 			errorInput: '', errorMessage: '',
 			action: '', actionInfo: {},
 		}
-		this.getUsers = this.getUsers.bind(this);
 		this.getProfiles = this.getProfiles.bind(this);
 		this.handleDialogClose = this.handleDialogClose.bind(this);
-		this.handleDeleteUser = this.handleDeleteUser.bind(this);
-		this.handleEditUser = this.handleEditUser.bind(this);
-		this.handleChangeUserPassword = this.handleChangeUserPassword.bind(this);
+		this.handleDeleteProfile = this.handleDeleteProfile.bind(this);
+		this.handleEditProfile = this.handleEditProfile.bind(this);
 	}
 
 	componentDidMount() {
-		this.getUsers();
 		this.getProfiles();
-	}
-
-	getUsers() {
-		if (cookies.get('user-token') == null) {
-			this.props.history.push('/');
-			return;
-		}
-		fetch(Config.apiURL + "users/", {
-			method: "GET",
-			headers: { 
-			"Content-type": "application/json; charset=UTF-8",
-			"x-user-token": cookies.get('user-token'),
-			} 
-		})
-		.then((resp) => {
-			resp.json().then((data) => {
-				if ('auth' in data) {
-					cookies.remove('user-token');
-					this.props.history.push('/');
-				} else if ('error' in data)
-					this.props.history.push('/painel');
-				else
-					this.setState({usersLoaded: true, users: data.users});
-			})
-		})
-		.catch((e) => {
-			setTimeout(this.getUsers, 5000);
-			console.log(e);
-		});
 	}
 
 	getProfiles() {
@@ -127,9 +93,7 @@ class UsersRoute extends React.Component {
 				} else if ('error' in data)
 					this.props.history.push('/painel');
 				else {
-					let profilesById = {}
-					data.profiles.forEach((profile) => profilesById[profile.id] = profile)
-					this.setState({profilesLoaded: true, profiles: data.profiles, profilesById: profilesById});
+					this.setState({profilesLoaded: true, profiles: data.profiles});
 				}
 			})
 		})
@@ -140,15 +104,14 @@ class UsersRoute extends React.Component {
 	}
 
 	handleDialogClose() {
-		this.setState({usersLoaded: false, profilesLoaded: false, action: ''});
-		this.getUsers();
+		this.setState({profilesLoaded: false, action: ''});
 		this.getProfiles();
 	}
 
-	handleDeleteUser(userId) {
-		if (window.confirm(`Deseja realmente deletar o usuário id ${userId}?`)) {
+	handleDeleteProfile(profileId) {
+		if (window.confirm(`Deseja realmente deletar o perfil id ${profileId}?`)) {
 			this.setState({trying: true});
-			fetch(Config.apiURL + "users/"+userId, {
+			fetch(Config.apiURL + "profiles/" + profileId, {
 				method: "DELETE",
 				headers: { 
 					"Content-type": "application/json; charset=UTF-8",
@@ -163,10 +126,6 @@ class UsersRoute extends React.Component {
 					} else if ('error' in data) {
 						let input = '', message = '';
 						switch(data.error) {
-							case 'cannot delete yourself':
-									input = 'error';
-									message = 'Não é possível deletar a si mesmo'
-								break;
 							default:
 								input = 'error';
 								message = 'Erro inesperado: '+data.error;
@@ -174,24 +133,20 @@ class UsersRoute extends React.Component {
 						this.setState({trying: false, errorInput: input, errorMessage: message});
 					}
 					else {
-						this.setState({trying: false, errorInput: 'success', errorMessage: 'Usuário deletado!', usersLoaded: false});
-						this.getUsers();
+						this.setState({trying: false, errorInput: 'success', errorMessage: 'Perfil deletado!', profilesLoaded: false});
+						this.getProfiles();
 					}
 				})
 			})
 			.catch((e) => {
-				setTimeout(() => this.handleDeleteUser(userId), 5000);
+				setTimeout(() => this.handleDeleteProfile(profileId), 5000);
 				console.log(e);
 			});	
 		}
 	}
 
-	handleEditUser(userId) {
-		this.setState({action: 'edit user', actionInfo: {userId: userId}});
-	}
-
-	handleChangeUserPassword(userId) {
-		this.setState({action: 'change user password', actionInfo: {userId: userId}});
+	handleEditProfile(profileId) {
+		this.setState({action: 'edit profile', actionInfo: {profileId: profileId}});
 	}
 
 	render() {
@@ -201,39 +156,30 @@ class UsersRoute extends React.Component {
 					<CustomAppBar history={this.props.history} location={this.props.location}/>
 					<div className={classes.root}>
 						<Typography variant="h4" align='center' gutterBottom style={{width: '100%'}}>
-							Usuários
+							Perfis
 						</Typography>
 						<TableContainer component={Paper}>
-							{(this.state.usersLoaded && this.state.profilesLoaded) ? <React.Fragment>
+							{(this.state.profilesLoaded) ? <React.Fragment>
 								<Table aria-label="spanning table" size="small">
 									<TableHead>
 										<TableRow>
 											<TableCell>ID</TableCell>
-											<TableCell align="right">Usuário</TableCell>
-											<TableCell align="right">Perfil</TableCell>
-											<TableCell align="right">Ativo</TableCell>
+											<TableCell align="right">Nome</TableCell>
 											<TableCell align="right">Ações</TableCell>
 										</TableRow>
 									</TableHead>
 									<TableBody>
-										{this.state.users.map((user) => <TableRow key={user.id}>
-											<TableCell>{user.id}</TableCell>
-											<TableCell align="right">{user.username}</TableCell>
-											<TableCell align="right">{this.state.profilesById[user.profile_id].name}</TableCell>
-											<TableCell align="right">{['Não', 'Sim'][user.active]}</TableCell>
+										{this.state.profiles.map((profile) => <TableRow key={profile.id}>
+											<TableCell>{profile.id}</TableCell>
+											<TableCell align="right">{profile.name}</TableCell>
 											<TableCell align="right">
 												<Tooltip title="Editar" aria-label="Editar">
-													<IconButton color="inherit" aria-label="Editar" onClick={() => this.handleEditUser(user.id)} disabled={this.state.trying}>
+													<IconButton color="inherit" aria-label="Editar" onClick={() => this.handleEditProfile(profile.id)} disabled={this.state.trying}>
 														<EditIcon />
 													</IconButton>
 												</Tooltip>
-												<Tooltip title="Alterar Senha" aria-label="Alterar Senha">
-													<IconButton color="inherit" aria-label="Alterar Senha" onClick={() => this.handleChangeUserPassword(user.id)} disabled={this.state.trying}>
-														<LockIcon />
-													</IconButton>
-												</Tooltip>
-												<Tooltip title="Apagar Usuário" aria-label="Apagar Usuário">
-													<IconButton color="inherit" aria-label="Apagar Usuário" onClick={() => this.handleDeleteUser(user.id)} disabled={this.state.trying}>
+												<Tooltip title="Apagar Perfil" aria-label="Apagar Perfil">
+													<IconButton color="inherit" aria-label="Apagar Perfil" onClick={() => this.handleDeleteProfile(profile.id)} disabled={this.state.trying}>
 														<DeleteForeverIcon />
 													</IconButton>
 												</Tooltip>
@@ -256,15 +202,14 @@ class UsersRoute extends React.Component {
 							</Grid>
 						</Grid>
 						<div className={classes.actions}>
-							<Button variant="contained" color="primary" disabled={this.state.trying} onClick={() => this.setState({action: 'add user'})}>Adicionar Usuário</Button>
+							<Button variant="contained" color="primary" disabled={this.state.trying} onClick={() => this.setState({action: 'add profile'})}>Adicionar Perfil</Button>
 						</div>
-						{(this.state.action == 'add user') ? <AddUserDialog handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
-						{(this.state.action == 'edit user') ? <EditUserDialog userId={this.state.actionInfo.userId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
-						{(this.state.action == 'change user password') ? <ChangeUserPasswordDialog userId={this.state.actionInfo.userId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
+						{(this.state.action == 'add profile') ? <AddProfileDialog handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
+						{(this.state.action == 'edit profile') ? <EditProfileDialog profileId={this.state.actionInfo.profileId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
 					</div>
 		</React.Fragment>
 	}
 
 }
 
-export default withStyles(useStyles)(UsersRoute)
+export default withStyles(useStyles)(ProfilesRoute)

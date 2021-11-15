@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import LoginRoute from "routes/LoginRoute";
 import PainelRoute from "routes/PainelRoute";
+import ProfilesRoute from "routes/ProfilesRoute";
 import UsersRoute from "routes/UsersRoute";
 import { useHistory } from 'react-router';
 import 'assets/css/general.css';
@@ -42,6 +43,7 @@ class SiteRouter extends React.Component {
                               <Route path="/" exact component={LoginRoute} />
                               <Route path="/painel" exact component={PainelRoute} />
                               <Route path="/usuarios" exact component={UsersRoute} />
+                              <Route path="/perfis" exact component={ProfilesRoute} />
                         	</Switch>
                         </div>
                      </MuiPickersUtilsProvider>
