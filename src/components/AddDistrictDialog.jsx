@@ -22,6 +22,8 @@ import LockIcon from '@material-ui/icons/Lock';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 const useStyles = (theme) => ({
 });
@@ -30,35 +32,37 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} mountOnEnter unmountOnExit {...props} />;
 });
 
-class AddUserDialog extends React.Component {
+class AddDistrictDialog extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: '',
-			password: '',
-			password_confirm: '',
-			profile: null,
-			profilesLoaded: false,
-			profiles: [],
+			name: '',
+			city: null,
+			api_name: '',
+			shipping_free_available: false,
+			shipping_express_price: 0.01,
+			shipping_normal_price: 0.01,
+			citiesLoaded: false,
+			cities: [],
 			trying: false,
 		}
 
 		this.handleDialogClose = this.handleDialogClose.bind(this);
-		this.getProfiles = this.getProfiles.bind(this);
+		this.getCities = this.getCities.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentDidMount() {
-		this.getProfiles();
+		this.getCities();
 	}
 
-	getProfiles() {
+	getCities() {
 		if (cookies.get('user-token') == null) {
 			this.props.history.push('/');
 			return;
 		}
-		fetch(Config.apiURL + "profiles/", {
+		fetch(Config.apiURL + "cities/module", {
 			method: "GET",
 			headers: { 
 			"Content-type": "application/json; charset=UTF-8",
@@ -73,11 +77,11 @@ class AddUserDialog extends React.Component {
 				} else if ('error' in data)
 					this.props.history.push('/painel');
 				else 
-					this.setState({profilesLoaded: true, profiles: data.profiles});
+					this.setState({citiesLoaded: true, cities: data.cities});
 			})
 		})
 		.catch((e) => {
-			setTimeout(this.getProfiles, 5000);
+			setTimeout(this.getCities, 5000);
 			console.log(e);
 		});
 	}
@@ -90,13 +94,15 @@ class AddUserDialog extends React.Component {
 		if (e != undefined)
 			e.preventDefault();
 		this.setState({trying: true});
-		fetch(Config.apiURL + "users/", {
+		fetch(Config.apiURL + "districts/", {
 			method: "POST",
 			body: JSON.stringify({
-				username: this.state.username,
-				password: this.state.password,
-				password_confirm: this.state.password_confirm,
-				profile_id: (this.state.profile != null) ? this.state.profile.id : -1,
+				name: this.state.name,
+				city_id: (this.state.city != null) ? this.state.city.id : -1,
+				api_name: this.state.api_name,
+				shipping_free_available: this.state.shipping_free_available,
+				shipping_normal_price: parseFloat(this.state.shipping_normal_price),
+				shipping_express_price: parseFloat(this.state.shipping_express_price),
 			}),
 			headers: { 
 				"Content-type": "application/json; charset=UTF-8",
@@ -111,41 +117,37 @@ class AddUserDialog extends React.Component {
 				} else if ('error' in data) {
 					let input = '', message = '';
 					switch(data.error) {
-						case 'username too short':
-							input = 'username';
-							message = 'Usuário muito curto (min. 4)'
+						case 'name too short':
+							input = 'name';
+							message = 'Nome muito curto (min. 1)'
 						break;
-						case 'username too long':
-							input = 'username';
-							message = 'Usuário muito longo (max. 12)'
+						case 'name too long':
+							input = 'name';
+							message = 'Nome muito longo (max. 30)'
 						break;
-						case 'username duplicate':
-							input = 'username';
-							message = 'Usuário já cadastrado'
+						case 'name duplicate':
+							input = 'name';
+							message = 'Bairro já cadastrado'
 						break;
-						case 'username invalid':
-							input = 'username';
-							message = 'Usuário inválido (somente números/letras/_)'
+						case 'city invalid':
+							input = 'city';
+							message = 'Cidade inválida'
 						break;
-						case 'password too short':
-							input = 'password';
-							message = 'Senha muito curta (min. 8)'
+						case 'api_name too short':
+							input = 'api_name';
+							message = 'Nome muito curto (min. 1)'
 						break;
-						case 'password too long':
-							input = 'password';
-							message = 'Senha muito longa (max. 15)'
+						case 'api_name too long':
+							input = 'api_name';
+							message = 'Nome muito longo (max. 30)'
 						break;
-						case 'password invalid':
-							input = 'password';
-							message = 'Senha inválida (somente números/letras/@_)'
+						case 'shipping_normal_price invalid':
+							input = 'shipping_normal_price';
+							message = 'Valor inválido'
 						break;
-						case 'password_confirm not match':
-							input = 'password_confirm';
-							message = 'As senhas não conferem'
-						break;
-						case 'profile invalid':
-							input = 'profile';
-							message = 'Perfil inválido'
+						case 'shipping_express_price invalid':
+							input = 'shipping_express_price';
+							message = 'Valor inválido'
 						break;
 						default:
 							input = 'error';
@@ -154,7 +156,7 @@ class AddUserDialog extends React.Component {
 					this.setState({trying: false, errorInput: input, errorMessage: message});
 				}
 				else {
-					this.setState({trying: false, errorInput: 'success', errorMessage: 'Usuário adicionado!'});
+					this.setState({trying: false, errorInput: 'success', errorMessage: 'Bairro adicionado!'});
 				}
 			})
 		})
@@ -170,7 +172,7 @@ class AddUserDialog extends React.Component {
 		return <React.Fragment>
 			<Dialog open onClose={this.handleDialogClose} TransitionComponent={Transition}>
 				<DialogTitle id="customized-dialog-title" onClose={this.handleDialogClose}>
-					Adicionar Usuário			
+					Adicionar Bairro			
 				</DialogTitle>
 				<DialogContent dividers>
 					<form action="#" onSubmit={this.handleSubmit} autoComplete="on">
@@ -179,92 +181,103 @@ class AddUserDialog extends React.Component {
 								<TextField
 									required
 									fullWidth
-									onChange={(e) => this.setState({username: e.target.value})}
+									onChange={(e) => this.setState({name: e.target.value})}
 									margin="normal"
-									id="username"
-									label="Usuário"
-									value={this.state.username}
+									id="name"
+									label="Nome"
+									value={this.state.name}
 									InputProps={{
-										startAdornment: (
-											<InputAdornment position="start">
-												<AccountCircle />
-											</InputAdornment>
-										),
 										inputProps: {
-											maxLength: 12
+											maxLength: 30
 										}
 									}}
 									disabled={this.state.trying}
-									error={this.state.errorInput == 'username'}
-									helperText={(this.state.errorInput == 'username') ? this.state.errorMessage : ''}
-									autoComplete='username'
-								/>
-							</Grid>
-							<Grid item xs={6}>
-								<TextField
-									required
-									fullWidth
-									onChange={(e) => this.setState({password: e.target.value})}
-									margin="normal"
-									type="password"
-									id="password"
-									label="Senha"
-									value={this.state.password}
-									InputProps={{
-										startAdornment: (
-											<InputAdornment position="start">
-												<LockIcon />
-											</InputAdornment>
-										),
-										inputProps: {
-											maxLength: 15
-										}
-									}}
-									disabled={this.state.trying}
-									error={this.state.errorInput == 'password'}
-									helperText={(this.state.errorInput == 'password') ? this.state.errorMessage : ''}
-									autoComplete='password'
-								/>
-							</Grid>
-							<Grid item xs={6}>
-								<TextField
-									required
-									fullWidth
-									onChange={(e) => this.setState({password_confirm: e.target.value})}
-									margin="normal"
-									type="password"
-									id="password_confirm"
-									label="Confirmação de Senha"
-									value={this.state.password_confirm}
-									InputProps={{
-										startAdornment: (
-											<InputAdornment position="start">
-												<LockIcon />
-											</InputAdornment>
-										),
-										inputProps: {
-											maxLength: 15
-										}
-									}}
-									disabled={this.state.trying}
-									error={this.state.errorInput == 'password_confirm'}
-									helperText={(this.state.errorInput == 'password_confirm') ? this.state.errorMessage : ''}
-									autoComplete='password'
+									error={this.state.errorInput == 'name'}
+									helperText={(this.state.errorInput == 'name') ? this.state.errorMessage : ''}
 								/>
 							</Grid>
 							<Grid item xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-								{(this.state.profilesLoaded) ?
+								{(this.state.citiesLoaded) ?
 									<Autocomplete
-										id="profile"
+										id="city"
 										fullWidth
-										value={this.state.profile}
-										onChange={(e, newValue) => this.setState({profile: newValue})}
-										options={this.state.profiles}
-										getOptionLabel={(profile) => `${profile.name}`}
+										value={this.state.city}
+										onChange={(e, newValue) => this.setState({city: newValue})}
+										options={this.state.cities}
+										getOptionLabel={(city) => `${city.name} - ${city.uf}`}
 										disabled={this.state.trying}
-										renderInput={(params) => <TextField {...params} error={this.state.errorInput == 'profile'} helperText={(this.state.errorInput == 'profile') ? this.state.errorMessage : ''} required margin="normal" label="Perfil" />}
+										renderInput={(params) => <TextField {...params} error={this.state.errorInput == 'city'} helperText={(this.state.errorInput == 'city') ? this.state.errorMessage : ''} required margin="normal" label="Cidade" />}
 									/>
 									: <CircularProgress color="primary"/>}
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									required
+									fullWidth
+									onChange={(e) => this.setState({api_name: e.target.value})}
+									margin="normal"
+									id="api_name"
+									label="Nome na API"
+									value={this.state.api_name}
+									InputProps={{
+										inputProps: {
+											maxLength: 30
+										}
+									}}
+									disabled={this.state.trying}
+									error={this.state.errorInput == 'api_name'}
+									helperText={(this.state.errorInput == 'api_name') ? this.state.errorMessage : ''}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<TextField
+									required
+									type="number"
+									fullWidth
+									onChange={(e) => this.setState({shipping_normal_price: e.target.value})}
+									margin="normal"
+									id="shipping_normal_price"
+									label="Valor da entrega normal"
+									value={this.state.shipping_normal_price}
+									InputProps={{
+										inputProps: {
+											min: 0.01,
+										}
+									}}
+									disabled={this.state.trying}
+									error={this.state.errorInput == 'shipping_normal_price'}
+									helperText={(this.state.errorInput == 'shipping_normal_price') ? this.state.errorMessage : ''}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<TextField
+									required
+									type="number"
+									fullWidth
+									onChange={(e) => this.setState({shipping_express_price: e.target.value})}
+									margin="normal"
+									id="shipping_express_price"
+									label="Valor da entrega expressa"
+									value={this.state.shipping_express_price}
+									InputProps={{
+										inputProps: {
+											min: 0.01,
+										}
+									}}
+									disabled={this.state.trying}
+									error={this.state.errorInput == 'shipping_express_price'}
+									helperText={(this.state.errorInput == 'shipping_express_price') ? this.state.errorMessage : ''}
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<FormControlLabel
+									value={this.state.shipping_free_available}
+									onChange={(e, newValue) => this.setState({shipping_free_available: newValue})}
+									control={<Switch color="primary" checked={this.state.shipping_free_available}/>}
+									label="Entrega Grátis disponível"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
 							</Grid>
 							{(this.state.errorInput == 'error') ?
 							<Grid item xs={12}>
@@ -296,4 +309,4 @@ class AddUserDialog extends React.Component {
 
 }
 
-export default withStyles(useStyles)(AddUserDialog)
+export default withStyles(useStyles)(AddDistrictDialog)

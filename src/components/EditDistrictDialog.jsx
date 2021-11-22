@@ -40,37 +40,40 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} mountOnEnter unmountOnExit {...props} />;
 });
 
-class EditUserDialog extends React.Component {
+class EditDistrictDialog extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			userLoaded: false,
-			user: {},
-			username: '',
-			profile: null,
-			active: false,
-			profilesLoaded: false,
-			profiles: [],
+			name: '',
+			city: null,
+			api_name: '',
+			shipping_free_available: false,
+			shipping_express_price: 0.01,
+			shipping_normal_price: 0.01,
+			citiesLoaded: false,
+			cities: [],
+			districtLoaded: false,
+			district: {},
 			trying: false,
 		}
 
 		this.handleDialogClose = this.handleDialogClose.bind(this);
-		this.getUser = this.getUser.bind(this);
-		this.getProfiles = this.getProfiles.bind(this);
+		this.getDistrict = this.getDistrict.bind(this);
+		this.getCities = this.getCities.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	componentDidMount() {
-		this.getProfiles();
+		this.getCities();
 	}
 
-	getUser() {
+	getDistrict() {
 		if (cookies.get('user-token') == null) {
 			this.props.history.push('/');
 			return;
 		}
-		fetch(Config.apiURL + "users/" + this.props.userId, {
+		fetch(Config.apiURL + "districts/" + this.props.districtId, {
 			method: "GET",
 			headers: { 
 			"Content-type": "application/json; charset=UTF-8",
@@ -85,34 +88,37 @@ class EditUserDialog extends React.Component {
 				} else if ('error' in data)
 					this.props.history.push('/painel');
 				else {
-					let profile = null;
-					for (let i=0; i< this.state.profiles.length; i++)
-						if (this.state.profiles[i].id == data.user.profile_id) {
-							profile = this.state.profiles[i];
+					let city = null;
+					for (let i=0; i< this.state.cities.length; i++)
+						if (this.state.cities[i].id == data.district.city_id) {
+							city = this.state.cities[i];
 							break;
 						}
 					this.setState({
-						userLoaded: true,
-						user: data.user,
-						username: data.user.username,
-						profile: profile,
-						active: data.user.active,
+						districtLoaded: true,
+						district: data.district,
+						name: data.district.name,
+						city: city,
+						api_name: data.district.api_name,
+						shipping_free_available: data.district.shipping_free_available,
+						shipping_normal_price: data.district.shipping_normal_price,
+						shipping_express_price: data.district.shipping_express_price,
 					});
 				}
 			})
 		})
 		.catch((e) => {
-			setTimeout(this.getUser, 5000);
+			setTimeout(this.getDistrict, 5000);
 			console.log(e);
 		});
 	}
 
-	getProfiles() {
+	getCities() {
 		if (cookies.get('user-token') == null) {
 			this.props.history.push('/');
 			return;
 		}
-		fetch(Config.apiURL + "profiles/", {
+		fetch(Config.apiURL + "cities/module", {
 			method: "GET",
 			headers: { 
 			"Content-type": "application/json; charset=UTF-8",
@@ -127,13 +133,13 @@ class EditUserDialog extends React.Component {
 				} else if ('error' in data)
 					this.props.history.push('/painel');
 				else {
-					this.setState({profilesLoaded: true, profiles: data.profiles});
-					this.getUser();
+					this.setState({citiesLoaded: true, cities: data.cities});
+					this.getDistrict();
 				}
 			})
 		})
 		.catch((e) => {
-			setTimeout(this.getProfiles, 5000);
+			setTimeout(this.getCities, 5000);
 			console.log(e);
 		});
 	}
@@ -146,12 +152,15 @@ class EditUserDialog extends React.Component {
 		if (e != undefined)
 			e.preventDefault();
 		this.setState({trying: true});
-		fetch(Config.apiURL + "users/" + this.props.userId, {
+		fetch(Config.apiURL + "districts/" + this.props.districtId, {
 			method: "PATCH",
 			body: JSON.stringify({
-				username: this.state.username,
-				profile_id: (this.state.profile != null) ? this.state.profile.id : -1,
-				active: this.state.active,
+				name: this.state.name,
+				city_id: (this.state.city != null) ? this.state.city.id : -1,
+				api_name: this.state.api_name,
+				shipping_free_available: this.state.shipping_free_available,
+				shipping_normal_price: parseFloat(this.state.shipping_normal_price),
+				shipping_express_price: parseFloat(this.state.shipping_express_price),
 			}),
 			headers: { 
 				"Content-type": "application/json; charset=UTF-8",
@@ -166,29 +175,37 @@ class EditUserDialog extends React.Component {
 				} else if ('error' in data) {
 					let input = '', message = '';
 					switch(data.error) {
-						case 'username too short':
-							input = 'username';
-							message = 'Usuário muito curto (min. 4)'
+						case 'name too short':
+							input = 'name';
+							message = 'Nome muito curto (min. 1)'
 						break;
-						case 'username too long':
-							input = 'username';
-							message = 'Usuário muito longo (max. 12)'
+						case 'name too long':
+							input = 'name';
+							message = 'Nome muito longo (max. 30)'
 						break;
-						case 'username duplicate':
-							input = 'username';
-							message = 'Usuário já cadastrado'
+						case 'name duplicate':
+							input = 'name';
+							message = 'Bairro já cadastrado'
 						break;
-						case 'username invalid':
-							input = 'username';
-							message = 'Usuário inválido (somente números/letras/_)'
+						case 'city invalid':
+							input = 'city';
+							message = 'Cidade inválida'
 						break;
-						case 'profile invalid':
-							input = 'profile';
-							message = 'Perfil inválido'
+						case 'api_name too short':
+							input = 'api_name';
+							message = 'Nome muito curto (min. 1)'
 						break;
-						case 'active invalid':
-							input = 'error';
-							message = 'Situação de ativo inválida'
+						case 'api_name too long':
+							input = 'api_name';
+							message = 'Nome muito longo (max. 30)'
+						break;
+						case 'shipping_normal_price invalid':
+							input = 'shipping_normal_price';
+							message = 'Valor inválido'
+						break;
+						case 'shipping_express_price invalid':
+							input = 'shipping_express_price';
+							message = 'Valor inválido'
 						break;
 						default:
 							input = 'error';
@@ -197,8 +214,8 @@ class EditUserDialog extends React.Component {
 					this.setState({trying: false, errorInput: input, errorMessage: message});
 				}
 				else {
-					this.setState({trying: false, errorInput: 'success', userLoaded: false, errorMessage: 'Usuário atualizado!'});
-					this.getUser();
+					this.setState({trying: false, errorInput: 'success', errorMessage: 'Bairro atualizado!', districtLoaded: false});
+					this.getDistrict();
 				}
 			})
 		})
@@ -214,57 +231,110 @@ class EditUserDialog extends React.Component {
 		return <React.Fragment>
 			<Dialog open onClose={this.handleDialogClose} TransitionComponent={Transition}>
 				<DialogTitle id="customized-dialog-title" onClose={this.handleDialogClose}>
-					Editar Usuário			
+					Editar Bairro			
 				</DialogTitle>
 				<DialogContent dividers>
-					{this.state.userLoaded ?
+					{this.state.districtLoaded ?
 						<form action="#" onSubmit={this.handleSubmit} autoComplete="on">
 							<Grid container spacing={1}>
 								<Grid item xs={12}>
 									<TextField
 										required
 										fullWidth
-										onChange={(e) => this.setState({username: e.target.value})}
+										onChange={(e) => this.setState({name: e.target.value})}
 										margin="normal"
-										id="username"
-										label="Usuário"
-										value={this.state.username}
+										id="name"
+										label="Nome"
+										value={this.state.name}
 										InputProps={{
-											startAdornment: (
-												<InputAdornment position="start">
-													<AccountCircle />
-												</InputAdornment>
-											),
 											inputProps: {
-												maxLength: 12
+												maxLength: 30
 											}
 										}}
 										disabled={this.state.trying}
-										error={this.state.errorInput == 'username'}
-										helperText={(this.state.errorInput == 'username') ? this.state.errorMessage : ''}
-										autoComplete='username'
+										error={this.state.errorInput == 'name'}
+										helperText={(this.state.errorInput == 'name') ? this.state.errorMessage : ''}
 									/>
 								</Grid>
 								<Grid item xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-									{(this.state.profilesLoaded) ?
+									{(this.state.citiesLoaded) ?
 										<Autocomplete
-											id="profile"
+											id="city"
 											fullWidth
-											value={this.state.profile}
-											onChange={(e, newValue) => this.setState({profile: newValue})}
-											options={this.state.profiles}
-											getOptionLabel={(profile) => `${profile.name}`}
+											value={this.state.city}
+											onChange={(e, newValue) => this.setState({city: newValue})}
+											options={this.state.cities}
+											getOptionLabel={(city) => `${city.name} - ${city.uf}`}
 											disabled={this.state.trying}
-											renderInput={(params) => <TextField {...params} error={this.state.errorInput == 'profile'} helperText={(this.state.errorInput == 'profile') ? this.state.errorMessage : ''} required margin="normal" label="Perfil" />}
+											renderInput={(params) => <TextField {...params} error={this.state.errorInput == 'city'} helperText={(this.state.errorInput == 'city') ? this.state.errorMessage : ''} required margin="normal" label="Cidade" />}
 										/>
 										: <CircularProgress color="primary"/>}
 								</Grid>
 								<Grid item xs={12}>
+									<TextField
+										required
+										fullWidth
+										onChange={(e) => this.setState({api_name: e.target.value})}
+										margin="normal"
+										id="api_name"
+										label="Nome na API"
+										value={this.state.api_name}
+										InputProps={{
+											inputProps: {
+												maxLength: 30
+											}
+										}}
+										disabled={this.state.trying}
+										error={this.state.errorInput == 'api_name'}
+										helperText={(this.state.errorInput == 'api_name') ? this.state.errorMessage : ''}
+									/>
+								</Grid>
+								<Grid item xs={6}>
+									<TextField
+										required
+										type="number"
+										fullWidth
+										onChange={(e) => this.setState({shipping_normal_price: e.target.value})}
+										margin="normal"
+										id="shipping_normal_price"
+										label="Valor da entrega normal"
+										value={this.state.shipping_normal_price}
+										InputProps={{
+											inputProps: {
+												min: 0.01,
+											}
+										}}
+										disabled={this.state.trying}
+										error={this.state.errorInput == 'shipping_normal_price'}
+										helperText={(this.state.errorInput == 'shipping_normal_price') ? this.state.errorMessage : ''}
+									/>
+								</Grid>
+								<Grid item xs={6}>
+									<TextField
+										required
+										type="number"
+										fullWidth
+										onChange={(e) => this.setState({shipping_express_price: e.target.value})}
+										margin="normal"
+										id="shipping_express_price"
+										label="Valor da entrega expressa"
+										value={this.state.shipping_express_price}
+										InputProps={{
+											inputProps: {
+												min: 0.01,
+											}
+										}}
+										disabled={this.state.trying}
+										error={this.state.errorInput == 'shipping_express_price'}
+										helperText={(this.state.errorInput == 'shipping_express_price') ? this.state.errorMessage : ''}
+									/>
+								</Grid>
+								<Grid item xs={12}>
 									<FormControlLabel
-										value={this.state.active}
-										onChange={(e, newValue) => this.setState({active: newValue})}
-										control={<Switch color="primary" checked={this.state.active}/>}
-										label="Ativo"
+										value={this.state.shipping_free_available}
+										onChange={(e, newValue) => this.setState({shipping_free_available: newValue})}
+										control={<Switch color="primary" checked={this.state.shipping_free_available}/>}
+										label="Entrega Grátis disponível"
 										labelPlacement="start"
 										disabled={this.state.trying}
 									/>
@@ -299,4 +369,4 @@ class EditUserDialog extends React.Component {
 
 }
 
-export default withStyles(useStyles)(EditUserDialog)
+export default withStyles(useStyles)(EditDistrictDialog)

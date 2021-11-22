@@ -40,37 +40,32 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} mountOnEnter unmountOnExit {...props} />;
 });
 
-class EditUserDialog extends React.Component {
+class EditSizeDialog extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			userLoaded: false,
-			user: {},
-			username: '',
-			profile: null,
-			active: false,
-			profilesLoaded: false,
-			profiles: [],
+			name: '',
+			sizeLoaded: false,
+			size: {},
 			trying: false,
 		}
 
 		this.handleDialogClose = this.handleDialogClose.bind(this);
-		this.getUser = this.getUser.bind(this);
-		this.getProfiles = this.getProfiles.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.getSize = this.getSize.bind(this);
 	}
 
 	componentDidMount() {
-		this.getProfiles();
+		this.getSize();
 	}
 
-	getUser() {
+	getSize() {
 		if (cookies.get('user-token') == null) {
 			this.props.history.push('/');
 			return;
 		}
-		fetch(Config.apiURL + "users/" + this.props.userId, {
+		fetch(Config.apiURL + "sizes/" + this.props.sizeId, {
 			method: "GET",
 			headers: { 
 			"Content-type": "application/json; charset=UTF-8",
@@ -85,55 +80,16 @@ class EditUserDialog extends React.Component {
 				} else if ('error' in data)
 					this.props.history.push('/painel');
 				else {
-					let profile = null;
-					for (let i=0; i< this.state.profiles.length; i++)
-						if (this.state.profiles[i].id == data.user.profile_id) {
-							profile = this.state.profiles[i];
-							break;
-						}
 					this.setState({
-						userLoaded: true,
-						user: data.user,
-						username: data.user.username,
-						profile: profile,
-						active: data.user.active,
+						sizeLoaded: true,
+						size: data.size,
+						name: data.size.name,
 					});
 				}
 			})
 		})
 		.catch((e) => {
-			setTimeout(this.getUser, 5000);
-			console.log(e);
-		});
-	}
-
-	getProfiles() {
-		if (cookies.get('user-token') == null) {
-			this.props.history.push('/');
-			return;
-		}
-		fetch(Config.apiURL + "profiles/", {
-			method: "GET",
-			headers: { 
-			"Content-type": "application/json; charset=UTF-8",
-			"x-user-token": cookies.get('user-token'),
-			} 
-		})
-		.then((resp) => {
-			resp.json().then((data) => {
-				if ('auth' in data) {
-					cookies.remove('user-token');
-					this.props.history.push('/');
-				} else if ('error' in data)
-					this.props.history.push('/painel');
-				else {
-					this.setState({profilesLoaded: true, profiles: data.profiles});
-					this.getUser();
-				}
-			})
-		})
-		.catch((e) => {
-			setTimeout(this.getProfiles, 5000);
+			setTimeout(this.getSize, 5000);
 			console.log(e);
 		});
 	}
@@ -146,12 +102,10 @@ class EditUserDialog extends React.Component {
 		if (e != undefined)
 			e.preventDefault();
 		this.setState({trying: true});
-		fetch(Config.apiURL + "users/" + this.props.userId, {
+		fetch(Config.apiURL + "sizes/" + this.props.sizeId, {
 			method: "PATCH",
 			body: JSON.stringify({
-				username: this.state.username,
-				profile_id: (this.state.profile != null) ? this.state.profile.id : -1,
-				active: this.state.active,
+				name: this.state.name,
 			}),
 			headers: { 
 				"Content-type": "application/json; charset=UTF-8",
@@ -166,29 +120,17 @@ class EditUserDialog extends React.Component {
 				} else if ('error' in data) {
 					let input = '', message = '';
 					switch(data.error) {
-						case 'username too short':
-							input = 'username';
-							message = 'Usuário muito curto (min. 4)'
+						case 'name too short':
+							input = 'name';
+							message = 'Nome muito curto (min. 1)'
 						break;
-						case 'username too long':
-							input = 'username';
-							message = 'Usuário muito longo (max. 12)'
+						case 'name too long':
+							input = 'name';
+							message = 'Nome muito longo (max. 15)'
 						break;
-						case 'username duplicate':
-							input = 'username';
-							message = 'Usuário já cadastrado'
-						break;
-						case 'username invalid':
-							input = 'username';
-							message = 'Usuário inválido (somente números/letras/_)'
-						break;
-						case 'profile invalid':
-							input = 'profile';
-							message = 'Perfil inválido'
-						break;
-						case 'active invalid':
-							input = 'error';
-							message = 'Situação de ativo inválida'
+						case 'name duplicate':
+							input = 'name';
+							message = 'Tamanho já cadastrado'
 						break;
 						default:
 							input = 'error';
@@ -197,8 +139,7 @@ class EditUserDialog extends React.Component {
 					this.setState({trying: false, errorInput: input, errorMessage: message});
 				}
 				else {
-					this.setState({trying: false, errorInput: 'success', userLoaded: false, errorMessage: 'Usuário atualizado!'});
-					this.getUser();
+					this.setState({trying: false, errorInput: 'success', errorMessage: 'Tamanho atualizado!'});
 				}
 			})
 		})
@@ -214,59 +155,30 @@ class EditUserDialog extends React.Component {
 		return <React.Fragment>
 			<Dialog open onClose={this.handleDialogClose} TransitionComponent={Transition}>
 				<DialogTitle id="customized-dialog-title" onClose={this.handleDialogClose}>
-					Editar Usuário			
+					Editar Tamanho
 				</DialogTitle>
 				<DialogContent dividers>
-					{this.state.userLoaded ?
+					{this.state.sizeLoaded ?
 						<form action="#" onSubmit={this.handleSubmit} autoComplete="on">
 							<Grid container spacing={1}>
 								<Grid item xs={12}>
 									<TextField
 										required
 										fullWidth
-										onChange={(e) => this.setState({username: e.target.value})}
+										onChange={(e) => this.setState({name: e.target.value})}
 										margin="normal"
-										id="username"
-										label="Usuário"
-										value={this.state.username}
+										id="name"
+										label="Nome"
+										value={this.state.name}
 										InputProps={{
-											startAdornment: (
-												<InputAdornment position="start">
-													<AccountCircle />
-												</InputAdornment>
-											),
 											inputProps: {
-												maxLength: 12
+												maxLength: 15
 											}
 										}}
 										disabled={this.state.trying}
-										error={this.state.errorInput == 'username'}
-										helperText={(this.state.errorInput == 'username') ? this.state.errorMessage : ''}
-										autoComplete='username'
-									/>
-								</Grid>
-								<Grid item xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-									{(this.state.profilesLoaded) ?
-										<Autocomplete
-											id="profile"
-											fullWidth
-											value={this.state.profile}
-											onChange={(e, newValue) => this.setState({profile: newValue})}
-											options={this.state.profiles}
-											getOptionLabel={(profile) => `${profile.name}`}
-											disabled={this.state.trying}
-											renderInput={(params) => <TextField {...params} error={this.state.errorInput == 'profile'} helperText={(this.state.errorInput == 'profile') ? this.state.errorMessage : ''} required margin="normal" label="Perfil" />}
-										/>
-										: <CircularProgress color="primary"/>}
-								</Grid>
-								<Grid item xs={12}>
-									<FormControlLabel
-										value={this.state.active}
-										onChange={(e, newValue) => this.setState({active: newValue})}
-										control={<Switch color="primary" checked={this.state.active}/>}
-										label="Ativo"
-										labelPlacement="start"
-										disabled={this.state.trying}
+										error={this.state.errorInput == 'name'}
+										helperText={(this.state.errorInput == 'name') ? this.state.errorMessage : ''}
+										autoComplete='name'
 									/>
 								</Grid>
 								{(this.state.errorInput == 'error') ?
@@ -283,7 +195,8 @@ class EditUserDialog extends React.Component {
 								</Grid> : ''}
 							</Grid>
 							<input type="submit" style={{display: 'none'}}/>
-						</form> : <div className={classes.progressArea}><CircularProgress color="primary"/></div>}
+						</form>
+					: <div className={classes.progressArea}><CircularProgress color="primary"/></div>}
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={this.handleDialogClose}>
@@ -299,4 +212,4 @@ class EditUserDialog extends React.Component {
 
 }
 
-export default withStyles(useStyles)(EditUserDialog)
+export default withStyles(useStyles)(EditSizeDialog)

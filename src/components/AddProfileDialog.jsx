@@ -40,6 +40,17 @@ class AddProfileDialog extends React.Component {
 			name: '',
 			users_module: false,
 			profiles_module: false,
+			products_module: false,
+			product_categories_module: false,
+			sizes_module: false,
+			product_inventory_module: false,
+			customers_module: false,
+			orders_module: false,
+			cities_module: false,
+			districts_module: false,
+			coupons_module: false,
+			consultants_module: false,
+			trying: false,
 		}
 
 		this.handleDialogClose = this.handleDialogClose.bind(this);
@@ -63,6 +74,16 @@ class AddProfileDialog extends React.Component {
 				name: this.state.name,
 				users_module: this.state.users_module,
 				profiles_module: this.state.profiles_module,
+				products_module: this.state.products_module,
+				product_categories_module: this.state.product_categories_module,
+				sizes_module: this.state.sizes_module,
+				product_inventory_module: this.state.product_inventory_module,
+				customers_module: this.state.customers_module,
+				orders_module: this.state.orders_module,
+				cities_module: this.state.cities_module,
+				districts_module: this.state.districts_module,
+				coupons_module: this.state.coupons_module,
+				consultants_module: this.state.consultants_module
 			}),
 			headers: { 
 				"Content-type": "application/json; charset=UTF-8",
@@ -82,7 +103,7 @@ class AddProfileDialog extends React.Component {
 							message = 'Nome muito curto (min. 4)'
 						break;
 						case 'name too long':
-							input = 'username';
+							input = 'name';
 							message = 'Nome muito longo (max. 50)'
 						break;
 						case 'name duplicate':
@@ -157,6 +178,106 @@ class AddProfileDialog extends React.Component {
 									onChange={(e, newValue) => this.setState({profiles_module: newValue})}
 									control={<Switch color="primary" checked={this.state.profiles_module}/>}
 									label="Módulo de Perfis"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.products_module}
+									onChange={(e, newValue) => this.setState({products_module: newValue})}
+									control={<Switch color="primary" checked={this.state.products_module}/>}
+									label="Módulo de Produtos"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.product_categories_module}
+									onChange={(e, newValue) => this.setState({product_categories_module: newValue})}
+									control={<Switch color="primary" checked={this.state.product_categories_module}/>}
+									label="Módulo de Categorias"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.sizes_module}
+									onChange={(e, newValue) => this.setState({sizes_module: newValue})}
+									control={<Switch color="primary" checked={this.state.sizes_module}/>}
+									label="Módulo de Tamanhos"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.product_inventory_module}
+									onChange={(e, newValue) => this.setState({product_inventory_module: newValue})}
+									control={<Switch color="primary" checked={this.state.product_inventory_module}/>}
+									label="Módulo de Estoque"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.customers_module}
+									onChange={(e, newValue) => this.setState({customers_module: newValue})}
+									control={<Switch color="primary" checked={this.state.customers_module}/>}
+									label="Módulo de Clientes"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.orders_module}
+									onChange={(e, newValue) => this.setState({orders_module: newValue})}
+									control={<Switch color="primary" checked={this.state.orders_module}/>}
+									label="Módulo de Pedidos"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.cities_module}
+									onChange={(e, newValue) => this.setState({cities_module: newValue})}
+									control={<Switch color="primary" checked={this.state.cities_module}/>}
+									label="Módulo de Cidades"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.districts_module}
+									onChange={(e, newValue) => this.setState({districts_module: newValue})}
+									control={<Switch color="primary" checked={this.state.districts_module}/>}
+									label="Módulo de Bairros"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.coupons_module}
+									onChange={(e, newValue) => this.setState({coupons_module: newValue})}
+									control={<Switch color="primary" checked={this.state.coupons_module}/>}
+									label="Módulo de Cupons"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.consultants_module}
+									onChange={(e, newValue) => this.setState({consultants_module: newValue})}
+									control={<Switch color="primary" checked={this.state.consultants_module}/>}
+									label="Módulo de Consultores"
 									labelPlacement="start"
 									disabled={this.state.trying}
 								/>

@@ -4,6 +4,122 @@
 		"selected_items":
 		[
 			[
+				"productCa",
+				"productCategory"
+			],
+			[
+				"product",
+				"productCategories"
+			],
+			[
+				"handleDeletePr",
+				"handleDeleteProductcategory"
+			],
+			[
+				"image",
+				"image512"
+			],
+			[
+				"iamg",
+				"image512"
+			],
+			[
+				"select",
+				"selectedImageSrc"
+			],
+			[
+				"selec",
+				"selectedImageSrc"
+			],
+			[
+				"selecte",
+				"onImageSelected"
+			],
+			[
+				"proe",
+				"productImages"
+			],
+			[
+				"Pho",
+				"PhotoLibraryIcon"
+			],
+			[
+				"hanl",
+				"handleEditProductSizes"
+			],
+			[
+				"handleEdit",
+				"handleEditProductSizes"
+			],
+			[
+				"handle",
+				"handleDeleteProductCategory"
+			],
+			[
+				"catego",
+				"categoriesById"
+			],
+			[
+				"categories",
+				"categoriesLoaded"
+			],
+			[
+				"handleEd",
+				"handleEditProductCategories"
+			],
+			[
+				"cate",
+				"categoriesById"
+			],
+			[
+				"productCate",
+				"productCategories"
+			],
+			[
+				"getPro",
+				"getProductCategories"
+			],
+			[
+				"prod",
+				"productLoaded"
+			],
+			[
+				"pri",
+				"price"
+			],
+			[
+				"align",
+				"alignItems"
+			],
+			[
+				"Person",
+				"PersonPinIcon"
+			],
+			[
+				"Confi",
+				"ConfirmationNumber"
+			],
+			[
+				"Pla",
+				"PlaceIcon"
+			],
+			[
+				"Face",
+				"FaceIcon"
+			],
+			[
+				"Hor",
+				"HorizontalSplitIcon"
+			],
+			[
+				"Hei",
+				"HeightIcon"
+			],
+			[
+				"View",
+				"ViewModuleIcon"
+			],
+			[
 				"profiles",
 				"profiles_module"
 			],
@@ -38,10 +154,6 @@
 			[
 				"error",
 				"errorInput"
-			],
-			[
-				"handle",
-				"handleDeleteUser"
 			],
 			[
 				"pass",
@@ -328,10 +440,6 @@
 				"productsIds"
 			],
 			[
-				"getPro",
-				"getProductsForPreOrder"
-			],
-			[
 				"all",
 				"allow_whatsapp"
 			],
@@ -406,114 +514,6 @@
 			[
 				"birth",
 				"birthday_month"
-			],
-			[
-				"consu",
-				"consultant_code"
-			],
-			[
-				"consultan",
-				"consultant_id"
-			],
-			[
-				"isVa",
-				"isValidPassword"
-			],
-			[
-				"district",
-				"district_id"
-			],
-			[
-				"mysql",
-				"mysqlEscape"
-			],
-			[
-				"str",
-				"stringToEscape"
-			],
-			[
-				"getCu",
-				"getCustomerBasicInfo"
-			],
-			[
-				"customer",
-				"customerId"
-			],
-			[
-				"prod",
-				"product_id"
-			],
-			[
-				"getPr",
-				"getProductInventory"
-			],
-			[
-				"pro",
-				"productId"
-			],
-			[
-				"mysq",
-				"mysqlEscape"
-			],
-			[
-				"tSh",
-				"tShirtY"
-			],
-			[
-				"tS",
-				"tShirtX"
-			],
-			[
-				"tShi",
-				"tShirtY"
-			],
-			[
-				"create",
-				"createCardTokenSuccess"
-			],
-			[
-				"createCa",
-				"createCardTokenFailure"
-			],
-			[
-				"createC",
-				"createCardTokenSuccess"
-			],
-			[
-				"cardEx",
-				"cardExpirationMonth"
-			],
-			[
-				"getCard",
-				"getCardInstallmentsSuccess"
-			],
-			[
-				"getCar",
-				"getCardInstallmentsSuccess"
-			],
-			[
-				"getBra",
-				"getBrandSuccess"
-			],
-			[
-				"cardB",
-				"cardBrand"
-			],
-			[
-				"boleto",
-				"boletoLink"
-			],
-			[
-				"getSe",
-				"getSessionId"
-			],
-			[
-				"getS",
-				"getSessionId"
-			],
-			[
-				"se",
-				"selectedPaymentMethod"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "src/App.jsx",
 			"settings":
 			{
-				"buffer_size": 1845,
+				"buffer_size": 2261,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -538,6 +538,69 @@
 			}
 		},
 		{
+			"file": "src/routes/ProductsRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 11129,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditProductImagesDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 10436,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/to/Desktop/Patins e Cia/FrontEnd/src/routes/CustomerRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 17029,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditProductCategoriesDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 10314,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditProductDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 9104,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditProductSizesDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 9910,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditProfileDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 12778,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "src/routes/ProfilesRoute.jsx",
 			"settings":
 			{
@@ -547,10 +610,19 @@
 			}
 		},
 		{
+			"file": "src/components/AddProductDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 7639,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "src/components/AddProfileDialog.jsx",
 			"settings":
 			{
-				"buffer_size": 5971,
+				"buffer_size": 10739,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -559,7 +631,7 @@
 			"file": "src/components/AddUserDialog.jsx",
 			"settings":
 			{
-				"buffer_size": 9113,
+				"buffer_size": 9131,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -568,16 +640,7 @@
 			"file": "src/components/EditUserDialog.jsx",
 			"settings":
 			{
-				"buffer_size": 9048,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/components/EditProfileDialog.jsx",
-			"settings":
-			{
-				"buffer_size": 7349,
+				"buffer_size": 9066,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -604,7 +667,61 @@
 			"file": "src/components/CustomAppBar.jsx",
 			"settings":
 			{
-				"buffer_size": 5827,
+				"buffer_size": 7434,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/routes/CategoriesRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 7600,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/AddCategoryDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 5704,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditCategoryDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 7451,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/routes/SizesRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 7087,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/AddSizeDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 4933,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditSizeDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 6105,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -687,6 +804,14 @@
 	},
 	"file_history":
 	[
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/routes/ProductCategoriesRoute.jsx",
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/components/AddProductCategoryDialog.jsx",
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/routes/CategoriesRoute.jsx",
+		"/C/Users/to/Desktop/Patins e Cia/FrontEnd/src/routes/CustomerRoute.jsx",
+		"/C/Users/to/Desktop/Patins e Cia/BackEnd/api/ApiController.js",
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/config/Config.js",
+		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/config/Config.js",
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/components/AddProductDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/erp/src/routes/UserRoute.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/erp/webpack.config.js",
 		"/C/Users/to/Desktop/Patins e Cia/FrontEnd/src/App.jsx",
@@ -705,7 +830,6 @@
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/ProfileDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/LoginDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/site/src/data/CatalogData.json",
-		"/C/Users/to/Desktop/Patins e Cia/BackEnd/api/ApiController.js",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/ProductDialog.jsx",
 		"/C/Users/to/Desktop/Patins e Cia/FrontEnd/src/components/AddOrderComponent.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/backend/api/VerifyCustomerToken.js",
@@ -729,7 +853,6 @@
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/Catalog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/backend/app.js",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/routes/SoonRoute.jsx",
-		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/config/Config.js",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/BagProduct.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/Bag.jsx",
 		"/C/Users/to/Desktop/Patins e Cia/FrontEnd/src/config/Config.js",
@@ -797,7 +920,6 @@
 		"/C/www/axie/general.css",
 		"/C/Users/to/Desktop/AxieEnergyCalculator/assets/css/general.css",
 		"/C/Users/to/Desktop/Patins e Cia/FrontEnd/package-lock.json",
-		"/C/Users/to/Desktop/Patins e Cia/FrontEnd/src/routes/CustomerRoute.jsx",
 		"/C/Users/to/Desktop/Patins e Cia/BackEnd/package.json",
 		"/C/Users/to/Desktop/a.js",
 		"/C/Users/to/Desktop/TRASH/lol data analysis/matchhistory.js",
@@ -809,12 +931,7 @@
 		"/C/Users/to/Desktop/lolalytics/server.js",
 		"/C/Users/to/Desktop/close.js",
 		"/C/Users/to/Desktop/TRASH/Omegle.js",
-		"/C/Users/to/Desktop/Patins e Cia/BackEnd/frontend/app.df82f621.js",
-		"/C/Users/to/Desktop/Patins e Cia/BackEnd/config.js",
-		"/C/Users/to/Desktop/TRASH/lol data analysis/leagueofgraphs.js",
-		"/C/Users/to/Desktop/TRASH/lol data analysis/draftAnalysis1.js",
-		"/C/Users/to/Desktop/TRASH/lol data analysis/Analise Por Historico League Pedia/analisePorHistorico.js",
-		"/C/Users/to/Desktop/TRASH/lol data analysis/Analise Por Historico League Pedia/dados/Lck2020SpringSeasonDrafts.json"
+		"/C/Users/to/Desktop/Patins e Cia/BackEnd/frontend/app.df82f621.js"
 	],
 	"find":
 	{
@@ -832,6 +949,28 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"username",
+			"visible",
+			"try",
+			"t",
+			"trying",
+			"profileById",
+			"profilesById",
+			"data.error",
+			"selectedImageSrc",
+			"size",
+			"sizes",
+			"Categor",
+			"category",
+			"AccountCircl",
+			"handle",
+			"prevent",
+			"left",
+			"trying",
+			"DeleteFor",
+			"ById",
+			"Descri",
+			"profile",
 			"User",
 			"user",
 			"this.props.userId",
@@ -848,6 +987,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"image",
+			"images",
 			"User",
 			"user"
 		],
@@ -860,7 +1001,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 16,
 			"sheets":
 			[
 				{
@@ -869,15 +1010,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1845,
+						"buffer_size": 2261,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								194,
-								194
+								1971,
+								1971
 							]
 						],
 						"settings":
@@ -887,10 +1028,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -906,8 +1047,8 @@
 						"selection":
 						[
 							[
-								1381,
-								1381
+								1659,
+								1659
 							]
 						],
 						"settings":
@@ -916,27 +1057,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 127.0,
+						"translation.y": 900.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/routes/ProfilesRoute.jsx",
+					"file": "src/routes/ProductsRoute.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7253,
+						"buffer_size": 11129,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6789,
-								6789
+								7667,
+								7667
 							]
 						],
 						"settings":
@@ -944,28 +1085,28 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 199.0,
-						"translation.y": 2655.0,
+						"translation.x": 0.0,
+						"translation.y": 3395.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "src/components/AddProfileDialog.jsx",
+					"file": "src/components/EditProductImagesDialog.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5971,
+						"buffer_size": 10436,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2884,
-								2884
+								8768,
+								8768
 							]
 						],
 						"settings":
@@ -974,77 +1115,19 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 67.0,
+						"translation.y": 3830.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "src/components/AddUserDialog.jsx",
+					"file": "/C/Users/to/Desktop/Patins e Cia/FrontEnd/src/routes/CustomerRoute.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9113,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5109,
-								5845
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2536.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/components/EditUserDialog.jsx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9048,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6010,
-								6010
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1920.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/components/EditProfileDialog.jsx",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7349,
+						"buffer_size": 17029,
 						"regions":
 						{
 						},
@@ -1061,14 +1144,275 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3022.0,
+						"translation.y": 1920.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/components/EditProductCategoriesDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3008,
+								3008
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 545.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/components/EditProductDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9104,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								763,
+								763
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 425.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
+					"file": "src/components/EditProductSizesDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9568,
+								9568
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 800.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/components/EditProfileDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12778,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5129,
+								5129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2165.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/routes/ProfilesRoute.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7253,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1912,
+								1916
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/components/AddProductDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7639,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1645,
+								1645
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 297.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/components/AddProfileDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10739,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3404,
+								3404
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1287.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/components/AddUserDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3265,
+								3273
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1430.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "src/components/EditUserDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9066,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4565,
+								4573
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2210.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
 					"file": "src/components/ChangeUserPasswordDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1093,11 +1437,11 @@
 						"translation.y": 2509.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 15,
 					"file": "src/routes/LoginRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1123,24 +1467,24 @@
 						"translation.y": 1080.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 16,
 					"file": "src/components/CustomAppBar.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5827,
+						"buffer_size": 7434,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2892,
-								2892
+								2691,
+								2691
 							]
 						],
 						"settings":
@@ -1149,14 +1493,188 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 967.0,
+						"translation.y": 600.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 17,
+					"file": "src/routes/CategoriesRoute.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7600,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4340,
+								4340
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2885.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "src/components/AddCategoryDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5704,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2517,
+								2517
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1062.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "src/components/EditCategoryDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7451,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7019,
+								7101
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3372.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "src/routes/SizesRoute.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4033,
+								4033
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 5.0,
+						"translation.y": 2630.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "src/components/AddSizeDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4933,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3743,
+								3743
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1797.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "src/components/EditSizeDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6105,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4023,
+								4023
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1752.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
 					"file": "src/routes/PainelRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1179,10 +1697,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 135.0,
+						"translation.y": 116.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

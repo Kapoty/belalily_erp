@@ -17,11 +17,12 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import LockIcon from '@material-ui/icons/Lock';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 const useStyles = (theme) => ({
 });
@@ -30,35 +31,37 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} mountOnEnter unmountOnExit {...props} />;
 });
 
-class AddUserDialog extends React.Component {
+class EditProductDialog extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			username: '',
-			password: '',
-			password_confirm: '',
-			profile: null,
-			profilesLoaded: false,
-			profiles: [],
+			name: '',
+			price: 0.01,
+			price_in_cash: 0.01,
+			description: '',
+			position: 0,
+			visible: false,
+			productLoaded: false,
+			product: {},
 			trying: false,
 		}
 
 		this.handleDialogClose = this.handleDialogClose.bind(this);
-		this.getProfiles = this.getProfiles.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.getProduct = this.getProduct.bind(this);
 	}
 
 	componentDidMount() {
-		this.getProfiles();
+		this.getProduct();
 	}
 
-	getProfiles() {
+	getProduct() {
 		if (cookies.get('user-token') == null) {
 			this.props.history.push('/');
 			return;
 		}
-		fetch(Config.apiURL + "profiles/", {
+		fetch(Config.apiURL + "products/" + this.props.productId, {
 			method: "GET",
 			headers: { 
 			"Content-type": "application/json; charset=UTF-8",
@@ -72,12 +75,22 @@ class AddUserDialog extends React.Component {
 					this.props.history.push('/');
 				} else if ('error' in data)
 					this.props.history.push('/painel');
-				else 
-					this.setState({profilesLoaded: true, profiles: data.profiles});
+				else {
+					this.setState({
+						productLoaded: true,
+						product: data.product,
+						name: data.product.name,
+						price: data.product.price,
+						price_in_cash: data.product.price_in_cash,
+						description: data.product.description.replace(/<br\/>/g, '\n'),
+						position: data.product.position,
+						visible: data.product.visible,
+					});
+				}
 			})
 		})
 		.catch((e) => {
-			setTimeout(this.getProfiles, 5000);
+			setTimeout(this.getProduct, 5000);
 			console.log(e);
 		});
 	}
@@ -90,13 +103,15 @@ class AddUserDialog extends React.Component {
 		if (e != undefined)
 			e.preventDefault();
 		this.setState({trying: true});
-		fetch(Config.apiURL + "users/", {
-			method: "POST",
+		fetch(Config.apiURL + "products/" + this.props.productId, {
+			method: "PATCH",
 			body: JSON.stringify({
-				username: this.state.username,
-				password: this.state.password,
-				password_confirm: this.state.password_confirm,
-				profile_id: (this.state.profile != null) ? this.state.profile.id : -1,
+				name: this.state.name,
+				price: parseFloat(this.state.price),
+				price_in_cash: parseFloat(this.state.price_in_cash),
+				description: this.state.description.replace(/\n/g, '<br/>'),
+				position: parseInt(this.state.position),
+				visible: this.state.visible,
 			}),
 			headers: { 
 				"Content-type": "application/json; charset=UTF-8",
@@ -111,41 +126,25 @@ class AddUserDialog extends React.Component {
 				} else if ('error' in data) {
 					let input = '', message = '';
 					switch(data.error) {
-						case 'username too short':
-							input = 'username';
-							message = 'Usuário muito curto (min. 4)'
+						case 'name too short':
+							input = 'name';
+							message = 'Nome muito curto (min. 1)'
 						break;
-						case 'username too long':
-							input = 'username';
-							message = 'Usuário muito longo (max. 12)'
+						case 'name too long':
+							input = 'name';
+							message = 'Nome muito longo (max. 30)'
 						break;
-						case 'username duplicate':
-							input = 'username';
-							message = 'Usuário já cadastrado'
+						case 'price invalid':
+							input = 'price';
+							message = 'Preço inválido'
 						break;
-						case 'username invalid':
-							input = 'username';
-							message = 'Usuário inválido (somente números/letras/_)'
+						case 'price_in_cash invalid':
+							input = 'price_in_cash';
+							message = 'Preço à vista inválido'
 						break;
-						case 'password too short':
-							input = 'password';
-							message = 'Senha muito curta (min. 8)'
-						break;
-						case 'password too long':
-							input = 'password';
-							message = 'Senha muito longa (max. 15)'
-						break;
-						case 'password invalid':
-							input = 'password';
-							message = 'Senha inválida (somente números/letras/@_)'
-						break;
-						case 'password_confirm not match':
-							input = 'password_confirm';
-							message = 'As senhas não conferem'
-						break;
-						case 'profile invalid':
-							input = 'profile';
-							message = 'Perfil inválido'
+						case 'position invalid':
+							input = 'position';
+							message = 'Posição inválida'
 						break;
 						default:
 							input = 'error';
@@ -154,7 +153,8 @@ class AddUserDialog extends React.Component {
 					this.setState({trying: false, errorInput: input, errorMessage: message});
 				}
 				else {
-					this.setState({trying: false, errorInput: 'success', errorMessage: 'Usuário adicionado!'});
+					this.setState({trying: false, errorInput: 'success', errorMessage: 'Produto atualizado!', productLoaded: false});
+					this.getProduct();
 				}
 			})
 		})
@@ -170,7 +170,7 @@ class AddUserDialog extends React.Component {
 		return <React.Fragment>
 			<Dialog open onClose={this.handleDialogClose} TransitionComponent={Transition}>
 				<DialogTitle id="customized-dialog-title" onClose={this.handleDialogClose}>
-					Adicionar Usuário			
+					Editar Produto			
 				</DialogTitle>
 				<DialogContent dividers>
 					<form action="#" onSubmit={this.handleSubmit} autoComplete="on">
@@ -179,92 +179,100 @@ class AddUserDialog extends React.Component {
 								<TextField
 									required
 									fullWidth
-									onChange={(e) => this.setState({username: e.target.value})}
+									onChange={(e) => this.setState({name: e.target.value})}
 									margin="normal"
-									id="username"
-									label="Usuário"
-									value={this.state.username}
+									id="name"
+									label="Nome"
+									value={this.state.name}
 									InputProps={{
-										startAdornment: (
-											<InputAdornment position="start">
-												<AccountCircle />
-											</InputAdornment>
-										),
 										inputProps: {
-											maxLength: 12
+											maxLength: 30
 										}
 									}}
 									disabled={this.state.trying}
-									error={this.state.errorInput == 'username'}
-									helperText={(this.state.errorInput == 'username') ? this.state.errorMessage : ''}
-									autoComplete='username'
+									error={this.state.errorInput == 'name'}
+									helperText={(this.state.errorInput == 'name') ? this.state.errorMessage : ''}
 								/>
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
 									required
+									type="number"
 									fullWidth
-									onChange={(e) => this.setState({password: e.target.value})}
+									onChange={(e) => this.setState({price: e.target.value})}
 									margin="normal"
-									type="password"
-									id="password"
-									label="Senha"
-									value={this.state.password}
+									id="price"
+									label="Preço"
+									value={this.state.price}
 									InputProps={{
-										startAdornment: (
-											<InputAdornment position="start">
-												<LockIcon />
-											</InputAdornment>
-										),
 										inputProps: {
-											maxLength: 15
+											min: 0.01,
 										}
 									}}
 									disabled={this.state.trying}
-									error={this.state.errorInput == 'password'}
-									helperText={(this.state.errorInput == 'password') ? this.state.errorMessage : ''}
-									autoComplete='password'
+									error={this.state.errorInput == 'price'}
+									helperText={(this.state.errorInput == 'price') ? this.state.errorMessage : ''}
 								/>
 							</Grid>
 							<Grid item xs={6}>
 								<TextField
 									required
+									type="number"
 									fullWidth
-									onChange={(e) => this.setState({password_confirm: e.target.value})}
+									onChange={(e) => this.setState({price_in_cash: e.target.value})}
 									margin="normal"
-									type="password"
-									id="password_confirm"
-									label="Confirmação de Senha"
-									value={this.state.password_confirm}
+									id="price_in_cash"
+									label="Preço à vista"
+									value={this.state.price_in_cash}
 									InputProps={{
-										startAdornment: (
-											<InputAdornment position="start">
-												<LockIcon />
-											</InputAdornment>
-										),
 										inputProps: {
-											maxLength: 15
+											min: 0.01,
 										}
 									}}
 									disabled={this.state.trying}
-									error={this.state.errorInput == 'password_confirm'}
-									helperText={(this.state.errorInput == 'password_confirm') ? this.state.errorMessage : ''}
-									autoComplete='password'
+									error={this.state.errorInput == 'price_in_cash'}
+									helperText={(this.state.errorInput == 'price_in_cash') ? this.state.errorMessage : ''}
 								/>
 							</Grid>
-							<Grid item xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-								{(this.state.profilesLoaded) ?
-									<Autocomplete
-										id="profile"
-										fullWidth
-										value={this.state.profile}
-										onChange={(e, newValue) => this.setState({profile: newValue})}
-										options={this.state.profiles}
-										getOptionLabel={(profile) => `${profile.name}`}
-										disabled={this.state.trying}
-										renderInput={(params) => <TextField {...params} error={this.state.errorInput == 'profile'} helperText={(this.state.errorInput == 'profile') ? this.state.errorMessage : ''} required margin="normal" label="Perfil" />}
-									/>
-									: <CircularProgress color="primary"/>}
+							<Grid item xs={12}>
+								<Typography variant="caption" color="textSecondary">Descrição</Typography>
+								<TextareaAutosize
+									style={{width: '100%', resize: 'none'}}
+									onChange={(e) => this.setState({description: e.target.value})}
+									value={this.state.description}
+									disabled={this.state.trying}
+									minRows={3}
+								/>
+							</Grid>
+							<Grid item xs={12}>
+								<TextField
+									required
+									type="number"
+									fullWidth
+									onChange={(e) => this.setState({position: e.target.value})}
+									margin="normal"
+									id="position"
+									label="Posição"
+									value={this.state.position}
+									InputProps={{
+										inputProps: {
+											min: 0,
+										}
+									}}
+									disabled={this.state.trying}
+									error={this.state.errorInput == 'position'}
+									helperText={(this.state.errorInput == 'position') ? this.state.errorMessage : ''}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.visible}
+									onChange={(e, newValue) => this.setState({visible: newValue})}
+									control={<Switch color="primary" checked={this.state.visible}/>}
+									label="Visível"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
 							</Grid>
 							{(this.state.errorInput == 'error') ?
 							<Grid item xs={12}>
@@ -287,7 +295,7 @@ class AddUserDialog extends React.Component {
 						Cancelar
 					</Button>
 					<Button onClick={this.handleSubmit} color="primary" disabled={this.state.trying}>
-						Adicionar
+						Salvar
 					</Button>
 				</DialogActions>
 			</Dialog>
@@ -296,4 +304,4 @@ class AddUserDialog extends React.Component {
 
 }
 
-export default withStyles(useStyles)(AddUserDialog)
+export default withStyles(useStyles)(EditProductDialog)

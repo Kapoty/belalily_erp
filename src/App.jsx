@@ -4,7 +4,12 @@ import ReactDOM from "react-dom";
 import LoginRoute from "routes/LoginRoute";
 import PainelRoute from "routes/PainelRoute";
 import ProfilesRoute from "routes/ProfilesRoute";
+import ProductsRoute from "routes/ProductsRoute";
 import UsersRoute from "routes/UsersRoute";
+import CategoriesRoute from "routes/CategoriesRoute";
+import SizesRoute from "routes/SizesRoute";
+import CitiesRoute from "routes/CitiesRoute";
+import DistrictsRoute from "routes/DistrictsRoute";
 import { useHistory } from 'react-router';
 import 'assets/css/general.css';
 
@@ -44,6 +49,11 @@ class SiteRouter extends React.Component {
                               <Route path="/painel" exact component={PainelRoute} />
                               <Route path="/usuarios" exact component={UsersRoute} />
                               <Route path="/perfis" exact component={ProfilesRoute} />
+                              <Route path="/produtos" exact component={ProductsRoute} />
+                              <Route path="/categorias" exact component={CategoriesRoute} />
+                              <Route path="/tamanhos" exact component={SizesRoute} />
+                              <Route path="/cidades" exact component={CitiesRoute} />
+                              <Route path="/bairros" exact component={DistrictsRoute} />
                         	</Switch>
                         </div>
                      </MuiPickersUtilsProvider>

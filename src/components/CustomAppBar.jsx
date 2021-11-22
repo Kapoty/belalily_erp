@@ -21,6 +21,15 @@ import MenuItem from '@material-ui/core/MenuItem';
 import GroupIcon from '@material-ui/icons/Group';
 import FaceIcon from '@material-ui/icons/Face';
 import HomeIcon from '@material-ui/icons/Home';
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import ViewColumnIcon from '@material-ui/icons/ViewColumn';
+import HeightIcon from '@material-ui/icons/Height';
+import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import LocationCityIcon from '@material-ui/icons/LocationCity';
+import PlaceIcon from '@material-ui/icons/Place';
+import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+import PersonPinIcon from '@material-ui/icons/PersonPin';
 
 import Config from "../config/Config";
 import Cookies from 'universal-cookie';
@@ -49,6 +58,16 @@ class CustomAppBar extends React.Component {
 			{name: 'Início', link: '/painel', requirement: '', iconComponent: HomeIcon},
 			{name: 'Usuários', link: '/usuarios', requirement: 'users_module', iconComponent: AccountCircleIcon},
 			{name: 'Perfis', link: '/perfis', requirement: 'profiles_module', iconComponent: GroupIcon},
+			{name: 'Produtos', link: '/produtos', requirement: 'products_module', iconComponent: ViewModuleIcon},
+			{name: 'Categorias', link: '/categorias', requirement: 'product_categories_module', iconComponent: ViewColumnIcon},
+			{name: 'Tamanhos', link: '/tamanhos', requirement: 'sizes_module', iconComponent: HeightIcon},
+			{name: 'Estoque', link: '/estoque', requirement: 'product_inventory_module', iconComponent: HorizontalSplitIcon},
+			{name: 'Clientes', link: '/clientes', requirement: 'customers_module', iconComponent: FaceIcon},
+			{name: 'Pedidos', link: '/pedidos', requirement: 'orders_module', iconComponent: ViewListIcon},
+			{name: 'Cidades', link: '/cidades', requirement: 'cities_module', iconComponent: LocationCityIcon},
+			{name: 'Bairros', link: '/bairros', requirement: 'districts_module', iconComponent: PlaceIcon},
+			{name: 'Cupons', link: '/cupons', requirement: 'coupons_module', iconComponent: ConfirmationNumberIcon},
+			{name: 'Consultores', link: '/consultores', requirement: 'consultants_module', iconComponent: PersonPinIcon},
 		];
 
 		this.handleMenuOpen = this.handleMenuOpen.bind(this);
