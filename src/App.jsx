@@ -10,6 +10,7 @@ import CategoriesRoute from "routes/CategoriesRoute";
 import SizesRoute from "routes/SizesRoute";
 import CitiesRoute from "routes/CitiesRoute";
 import DistrictsRoute from "routes/DistrictsRoute";
+import CouponsRoute from "routes/CouponsRoute";
 import { useHistory } from 'react-router';
 import 'assets/css/general.css';
 
@@ -54,6 +55,7 @@ class SiteRouter extends React.Component {
                               <Route path="/tamanhos" exact component={SizesRoute} />
                               <Route path="/cidades" exact component={CitiesRoute} />
                               <Route path="/bairros" exact component={DistrictsRoute} />
+                              <Route path="/cupons" exact component={CouponsRoute} />
                         	</Switch>
                         </div>
                      </MuiPickersUtilsProvider>

@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"coupon",
+				"couponLoaded"
+			],
+			[
+				"getCo",
+				"getCoupon"
+			],
+			[
+				"max",
+				"max_units"
+			],
+			[
+				"co",
+				"coupon"
+			],
+			[
+				"cons",
+				"consultant"
+			],
+			[
+				"con",
+				"consultant"
+			],
+			[
+				"consul",
+				"consultant"
+			],
+			[
+				"consu",
+				"consultants"
+			],
+			[
+				"c",
+				"consultant"
+			],
+			[
+				"express",
+				"shipping_express_price"
+			],
+			[
+				"shi",
+				"shipping_express_price"
+			],
+			[
+				"ship",
+				"shipping_free_available"
+			],
+			[
+				"district",
+				"districtsLoaded"
+			],
+			[
+				"sh",
+				"shipping_free_available"
+			],
+			[
+				"norma",
+				"shipping_normal_price"
+			],
+			[
+				"api",
+				"api_name"
+			],
+			[
+				"cities",
+				"citiesById"
+			],
+			[
+				"distr",
+				"districtsLoaded"
+			],
+			[
 				"productCa",
 				"productCategory"
 			],
@@ -212,10 +284,6 @@
 				"verifyToken"
 			],
 			[
-				"shi",
-				"shipping_street"
-			],
-			[
 				"disc",
 				"district_id"
 			],
@@ -292,10 +360,6 @@
 				"coupon_id"
 			],
 			[
-				"coupon",
-				"coupon_applied"
-			],
-			[
 				"coupon_d",
 				"coupon_discount"
 			],
@@ -318,10 +382,6 @@
 			[
 				"pagseguro",
 				"payment_pagseguro_reference"
-			],
-			[
-				"distr",
-				"districts"
 			],
 			[
 				"getCustomerInf",
@@ -412,10 +472,6 @@
 				"r_shipping_type"
 			],
 			[
-				"sh",
-				"shippingType"
-			],
-			[
 				"prid",
 				"db_productsById"
 			],
@@ -458,62 +514,6 @@
 			[
 				"allow_",
 				"allow_whatsapp"
-			],
-			[
-				"secre",
-				"secret_answer"
-			],
-			[
-				"new",
-				"new_password_confirm"
-			],
-			[
-				"adr",
-				"address_observation"
-			],
-			[
-				"fun",
-				"function"
-			],
-			[
-				"add",
-				"address_observation"
-			],
-			[
-				"disr",
-				"district_id"
-			],
-			[
-				"birt",
-				"birthday"
-			],
-			[
-				"getCustomer",
-				"getCustomerForResetPassword"
-			],
-			[
-				"msq",
-				"mysqlEscape"
-			],
-			[
-				"secret",
-				"secret_answer"
-			],
-			[
-				"bir",
-				"birthday_year"
-			],
-			[
-				"birthday",
-				"birthday_day"
-			],
-			[
-				"dis",
-				"district_id"
-			],
-			[
-				"birth",
-				"birthday_month"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "src/App.jsx",
 			"settings":
 			{
-				"buffer_size": 2261,
+				"buffer_size": 2668,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -628,10 +628,10 @@
 			}
 		},
 		{
-			"file": "src/components/AddUserDialog.jsx",
+			"file": "src/components/AddDistrictDialog.jsx",
 			"settings":
 			{
-				"buffer_size": 9131,
+				"buffer_size": 9820,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -641,6 +641,15 @@
 			"settings":
 			{
 				"buffer_size": 9066,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditDistrictDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 11644,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -668,6 +677,69 @@
 			"settings":
 			{
 				"buffer_size": 7434,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/routes/CitiesRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 7209,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditCityDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 6930,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/routes/DistrictsRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 10675,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/routes/CouponsRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 7523,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditCouponDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 12780,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/AddCouponDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 10824,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/AddCityDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 5732,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -804,6 +876,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/components/AddUserDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/erp/src/routes/ProductCategoriesRoute.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/erp/src/components/AddProductCategoryDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/erp/src/routes/CategoriesRoute.jsx",
@@ -930,8 +1003,7 @@
 		"/C/Users/to/Desktop/new keyboard/index.js",
 		"/C/Users/to/Desktop/lolalytics/server.js",
 		"/C/Users/to/Desktop/close.js",
-		"/C/Users/to/Desktop/TRASH/Omegle.js",
-		"/C/Users/to/Desktop/Patins e Cia/BackEnd/frontend/app.df82f621.js"
+		"/C/Users/to/Desktop/TRASH/Omegle.js"
 	],
 	"find":
 	{
@@ -949,6 +1021,10 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Value",
+			"newVale",
+			"citiesBy",
+			"byId",
 			"username",
 			"visible",
 			"try",
@@ -1001,7 +1077,7 @@
 	"groups":
 	[
 		{
-			"selected": 16,
+			"selected": 23,
 			"sheets":
 			[
 				{
@@ -1010,15 +1086,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2261,
+						"buffer_size": 2668,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1971,
-								1971
+								2378,
+								2378
 							]
 						],
 						"settings":
@@ -1028,10 +1104,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 507.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1047,8 +1123,8 @@
 						"selection":
 						[
 							[
-								1659,
-								1659
+								4140,
+								4140
 							]
 						],
 						"settings":
@@ -1057,10 +1133,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 900.0,
+						"translation.y": 1917.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -1076,8 +1152,8 @@
 						"selection":
 						[
 							[
-								7667,
-								7667
+								2225,
+								2418
 							]
 						],
 						"settings":
@@ -1086,10 +1162,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3395.0,
+						"translation.y": 2780.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1118,7 +1194,7 @@
 						"translation.y": 3830.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 28,
 					"type": "text"
 				},
 				{
@@ -1147,7 +1223,7 @@
 						"translation.y": 1920.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 29,
 					"type": "text"
 				},
 				{
@@ -1176,7 +1252,7 @@
 						"translation.y": 545.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
@@ -1202,10 +1278,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 425.0,
+						"translation.y": 1476.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -1234,7 +1310,7 @@
 						"translation.y": 800.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
@@ -1250,8 +1326,8 @@
 						"selection":
 						[
 							[
-								5129,
-								5129
+								3594,
+								3594
 							]
 						],
 						"settings":
@@ -1260,10 +1336,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2165.0,
+						"translation.y": 1300.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1292,7 +1368,7 @@
 						"translation.y": 2360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 27,
 					"type": "text"
 				},
 				{
@@ -1308,8 +1384,8 @@
 						"selection":
 						[
 							[
-								1645,
-								1645
+								3405,
+								3405
 							]
 						],
 						"settings":
@@ -1318,10 +1394,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 297.0,
+						"translation.y": 1272.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1347,27 +1423,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1287.0,
+						"translation.y": 4077.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 12,
-					"file": "src/components/AddUserDialog.jsx",
+					"file": "src/components/AddDistrictDialog.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9131,
+						"buffer_size": 9820,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3265,
-								3273
+								2908,
+								2847
 							]
 						],
 						"settings":
@@ -1376,10 +1452,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1430.0,
+						"translation.y": 1185.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1395,8 +1471,8 @@
 						"selection":
 						[
 							[
-								4565,
-								4573
+								2049,
+								3056
 							]
 						],
 						"settings":
@@ -1405,14 +1481,43 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2210.0,
+						"translation.y": 1510.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 14,
+					"file": "src/components/EditDistrictDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3380,
+								4091
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1660.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
 					"file": "src/components/ChangeUserPasswordDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1437,11 +1542,11 @@
 						"translation.y": 2509.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 31,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "src/routes/LoginRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1467,11 +1572,11 @@
 						"translation.y": 1080.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 30,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"file": "src/components/CustomAppBar.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1496,11 +1601,213 @@
 						"translation.y": 600.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "src/routes/CitiesRoute.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7209,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4190,
+								4190
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1860.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "src/components/EditCityDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6930,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2896,
+								2896
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2266.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "src/routes/DistrictsRoute.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10675,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9949,
+								9949
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4191.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "src/routes/CouponsRoute.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7523,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4173,
+								4173
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2435.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "src/components/EditCouponDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12780,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10363,
+								10363
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5330.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "src/components/AddCouponDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10824,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6759,
+								6759
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3179.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 24,
+					"file": "src/components/AddCityDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5732,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2335,
+								2950
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1013.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 25,
 					"file": "src/routes/CategoriesRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1525,11 +1832,11 @@
 						"translation.y": 2885.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 26,
 					"file": "src/components/AddCategoryDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1554,11 +1861,11 @@
 						"translation.y": 1062.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 27,
 					"file": "src/components/EditCategoryDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1583,11 +1890,11 @@
 						"translation.y": 3372.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 28,
 					"file": "src/routes/SizesRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1612,11 +1919,11 @@
 						"translation.y": 2630.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 29,
 					"file": "src/components/AddSizeDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1641,11 +1948,11 @@
 						"translation.y": 1797.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 30,
 					"file": "src/components/EditSizeDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1670,11 +1977,11 @@
 						"translation.y": 1752.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 31,
 					"file": "src/routes/PainelRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1700,7 +2007,7 @@
 						"translation.y": 116.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 18,
 					"type": "text"
 				}
 			]
