@@ -40,32 +40,33 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} mountOnEnter unmountOnExit {...props} />;
 });
 
-class EditSizeDialog extends React.Component {
+class EditConsultantDialog extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
 			name: '',
-			sizeLoaded: false,
-			size: {},
+			code: '',
 			trying: false,
+			consultantLoaded: false,
+			consultant: {},
 		}
 
+		this.getConsultant = this.getConsultant.bind(this);
 		this.handleDialogClose = this.handleDialogClose.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.getSize = this.getSize.bind(this);
 	}
 
 	componentDidMount() {
-		this.getSize();
+		this.getConsultant();
 	}
 
-	getSize() {
+	getConsultant() {
 		if (cookies.get('user-token') == null) {
 			this.props.history.push('/');
 			return;
 		}
-		fetch(Config.apiURL + "sizes/" + this.props.sizeId, {
+		fetch(Config.apiURL + "consultants/" + this.props.consultantId, {
 			method: "GET",
 			headers: { 
 			"Content-type": "application/json; charset=UTF-8",
@@ -81,15 +82,16 @@ class EditSizeDialog extends React.Component {
 					this.props.history.push('/painel');
 				else {
 					this.setState({
-						sizeLoaded: true,
-						size: data.size,
-						name: data.size.name,
+						consultantLoaded: true,
+						consultant: data.consultant,
+						name: data.consultant.name,
+						code: data.consultant.code,
 					});
 				}
 			})
 		})
 		.catch((e) => {
-			setTimeout(this.getSize, 5000);
+			setTimeout(this.getConsultant, 5000);
 			console.log(e);
 		});
 	}
@@ -102,10 +104,11 @@ class EditSizeDialog extends React.Component {
 		if (e != undefined)
 			e.preventDefault();
 		this.setState({trying: true});
-		fetch(Config.apiURL + "sizes/" + this.props.sizeId, {
+		fetch(Config.apiURL + "consultants/" + this.props.consultantId, {
 			method: "PATCH",
 			body: JSON.stringify({
 				name: this.state.name,
+				code: this.state.code,
 			}),
 			headers: { 
 				"Content-type": "application/json; charset=UTF-8",
@@ -122,15 +125,23 @@ class EditSizeDialog extends React.Component {
 					switch(data.error) {
 						case 'name too short':
 							input = 'name';
-							message = 'Nome muito curto (min. 1)'
+							message = 'Nome muito curto (min. 2)'
 						break;
 						case 'name too long':
 							input = 'name';
-							message = 'Nome muito longo (max. 15)'
+							message = 'Nome muito longo (max. 50)'
 						break;
-						case 'name duplicate':
-							input = 'name';
-							message = 'Tamanho já cadastrado'
+						case 'code too short':
+							input = 'code';
+							message = 'Código muito curto (min. 3)'
+						break;
+						case 'code too long':
+							input = 'code';
+							message = 'Código muito longo (max. 20)'
+						break;
+						case 'code duplicate':
+							input = 'code';
+							message = 'Código já cadastrado'
 						break;
 						default:
 							input = 'error';
@@ -139,8 +150,8 @@ class EditSizeDialog extends React.Component {
 					this.setState({trying: false, errorInput: input, errorMessage: message});
 				}
 				else {
-					this.setState({trying: false, errorInput: 'success', errorMessage: 'Tamanho atualizado!', sizeLoaded: false});
-					this.getSize();
+					this.setState({trying: false, errorInput: 'success', errorMessage: 'Consultor atualizado!', consultantLoaded: false});
+					this.getConsultant();
 				}
 			})
 		})
@@ -156,10 +167,10 @@ class EditSizeDialog extends React.Component {
 		return <React.Fragment>
 			<Dialog open onClose={this.handleDialogClose} TransitionComponent={Transition}>
 				<DialogTitle id="customized-dialog-title" onClose={this.handleDialogClose}>
-					Editar Tamanho
+					Editar Consultor
 				</DialogTitle>
 				<DialogContent dividers>
-					{this.state.sizeLoaded ?
+					{this.state.consultantLoaded ?
 						<form action="#" onSubmit={this.handleSubmit} autoComplete="on">
 							<Grid container spacing={1}>
 								<Grid item xs={12}>
@@ -173,13 +184,31 @@ class EditSizeDialog extends React.Component {
 										value={this.state.name}
 										InputProps={{
 											inputProps: {
-												maxLength: 15
+												maxLength: 50
 											}
 										}}
 										disabled={this.state.trying}
 										error={this.state.errorInput == 'name'}
 										helperText={(this.state.errorInput == 'name') ? this.state.errorMessage : ''}
-										autoComplete='name'
+									/>
+								</Grid>
+								<Grid item xs={12}>
+									<TextField
+										required
+										fullWidth
+										onChange={(e) => this.setState({code: e.target.value.toUpperCase()})}
+										margin="normal"
+										id="code"
+										label="Código"
+										value={this.state.code}
+										InputProps={{
+											inputProps: {
+												maxLength: 10
+											}
+										}}
+										disabled={this.state.trying}
+										error={this.state.errorInput == 'code'}
+										helperText={(this.state.errorInput == 'code') ? this.state.errorMessage : ''}
 									/>
 								</Grid>
 								{(this.state.errorInput == 'error') ?
@@ -213,4 +242,4 @@ class EditSizeDialog extends React.Component {
 
 }
 
-export default withStyles(useStyles)(EditSizeDialog)
+export default withStyles(useStyles)(EditConsultantDialog)

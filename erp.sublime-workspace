@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"consultant",
+				"consultantLoaded"
+			],
+			[
+				"categor",
+				"categoryLoaded"
+			],
+			[
 				"coupon",
 				"couponLoaded"
 			],
@@ -506,14 +514,6 @@
 			[
 				"al",
 				"allow_whatsapp"
-			],
-			[
-				"allow",
-				"allow_email"
-			],
-			[
-				"allow_",
-				"allow_whatsapp"
 			]
 		]
 	},
@@ -523,7 +523,7 @@
 			"file": "src/App.jsx",
 			"settings":
 			{
-				"buffer_size": 2668,
+				"buffer_size": 2961,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -703,7 +703,7 @@
 			"file": "src/routes/DistrictsRoute.jsx",
 			"settings":
 			{
-				"buffer_size": 10675,
+				"buffer_size": 11110,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -721,7 +721,7 @@
 			"file": "src/components/EditCouponDialog.jsx",
 			"settings":
 			{
-				"buffer_size": 12780,
+				"buffer_size": 12903,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -730,7 +730,52 @@
 			"file": "src/components/AddCouponDialog.jsx",
 			"settings":
 			{
-				"buffer_size": 10824,
+				"buffer_size": 10947,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/routes/ConsultantsRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 7547,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/EditConsultantDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 7114,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/routes/CustomersRoute.jsx",
+			"settings":
+			{
+				"buffer_size": 8123,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/SeeCustomerDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 5558,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/AddConsultantDialog.jsx",
+			"settings":
+			{
+				"buffer_size": 5748,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -766,7 +811,7 @@
 			"file": "src/components/EditCategoryDialog.jsx",
 			"settings":
 			{
-				"buffer_size": 7451,
+				"buffer_size": 7499,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -793,7 +838,7 @@
 			"file": "src/components/EditSizeDialog.jsx",
 			"settings":
 			{
-				"buffer_size": 6105,
+				"buffer_size": 6145,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -876,6 +921,12 @@
 	},
 	"file_history":
 	[
+		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/ProfileDialog.jsx",
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/util/Phone.jsx",
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/util/CPF.jsx",
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/util/Dates.jsx",
+		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/Bag.jsx",
+		"/C/Users/to/Desktop/PRV/Programming/erp/src/components/EditConsultantDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/erp/src/components/AddUserDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/erp/src/routes/ProductCategoriesRoute.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/erp/src/components/AddProductCategoryDialog.jsx",
@@ -900,7 +951,6 @@
 		"/C/Users/to/Desktop/PRV/Programming/pagseguro_frontend/src/routes/MainRoute.jsx",
 		"/C/Users/to/Desktop/Patins e Cia/BackEnd/db.js",
 		"/C/Users/to/Desktop/PRV/Programming/backend/api/CustomersController.js",
-		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/ProfileDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/LoginDialog.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/site/src/data/CatalogData.json",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/ProductDialog.jsx",
@@ -927,7 +977,6 @@
 		"/C/Users/to/Desktop/PRV/Programming/backend/app.js",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/routes/SoonRoute.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/BagProduct.jsx",
-		"/C/Users/to/Desktop/PRV/Programming/ecommerce/src/components/Bag.jsx",
 		"/C/Users/to/Desktop/Patins e Cia/FrontEnd/src/config/Config.js",
 		"/C/Users/to/Desktop/PRV/Programming/site/src/components/FAQ.jsx",
 		"/C/Users/to/Desktop/PRV/Programming/backend/pagseguro/PagseguroController.js",
@@ -999,11 +1048,7 @@
 		"/C/Users/to/Desktop/TRASH/lol data analysis/leaguepedia.js",
 		"/C/Users/to/Desktop/comando/build.js",
 		"/C/Users/to/Desktop/new keyboard/static/script.js",
-		"/C/Users/to/Desktop/new keyboard/static/index.html",
-		"/C/Users/to/Desktop/new keyboard/index.js",
-		"/C/Users/to/Desktop/lolalytics/server.js",
-		"/C/Users/to/Desktop/close.js",
-		"/C/Users/to/Desktop/TRASH/Omegle.js"
+		"/C/Users/to/Desktop/new keyboard/static/index.html"
 	],
 	"find":
 	{
@@ -1021,6 +1066,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"Não",
+			"consultants",
 			"Value",
 			"newVale",
 			"citiesBy",
@@ -1077,7 +1124,7 @@
 	"groups":
 	[
 		{
-			"selected": 23,
+			"selected": 20,
 			"sheets":
 			[
 				{
@@ -1086,28 +1133,28 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2668,
+						"buffer_size": 2961,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2378,
-								2378
+								2670,
+								2670
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
+							"tab_size": 3,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 507.0,
+						"translation.y": 512.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -1123,8 +1170,8 @@
 						"selection":
 						[
 							[
-								4140,
-								4140
+								6743,
+								6746
 							]
 						],
 						"settings":
@@ -1133,10 +1180,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1917.0,
+						"translation.y": 3050.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1165,7 +1212,7 @@
 						"translation.y": 2780.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
@@ -1194,7 +1241,7 @@
 						"translation.y": 3830.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 28,
+					"stack_index": 33,
 					"type": "text"
 				},
 				{
@@ -1223,7 +1270,7 @@
 						"translation.y": 1920.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 29,
+					"stack_index": 34,
 					"type": "text"
 				},
 				{
@@ -1252,7 +1299,7 @@
 						"translation.y": 545.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 31,
 					"type": "text"
 				},
 				{
@@ -1281,7 +1328,7 @@
 						"translation.y": 1476.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
@@ -1310,7 +1357,7 @@
 						"translation.y": 800.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 30,
 					"type": "text"
 				},
 				{
@@ -1339,7 +1386,7 @@
 						"translation.y": 1300.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 18,
 					"type": "text"
 				},
 				{
@@ -1368,7 +1415,7 @@
 						"translation.y": 2360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 27,
+					"stack_index": 32,
 					"type": "text"
 				},
 				{
@@ -1394,10 +1441,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1272.0,
+						"translation.y": 1092.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
@@ -1413,8 +1460,8 @@
 						"selection":
 						[
 							[
-								3404,
-								3404
+								3692,
+								3642
 							]
 						],
 						"settings":
@@ -1423,10 +1470,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4077.0,
+						"translation.y": 1202.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -1455,7 +1502,7 @@
 						"translation.y": 1185.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -1484,7 +1531,7 @@
 						"translation.y": 1510.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
@@ -1510,10 +1557,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1660.0,
+						"translation.y": 2996.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1542,7 +1589,7 @@
 						"translation.y": 2509.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 31,
+					"stack_index": 36,
 					"type": "text"
 				},
 				{
@@ -1572,7 +1619,7 @@
 						"translation.y": 1080.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 30,
+					"stack_index": 35,
 					"type": "text"
 				},
 				{
@@ -1601,7 +1648,7 @@
 						"translation.y": 600.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
@@ -1623,13 +1670,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 1860.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
@@ -1658,7 +1706,7 @@
 						"translation.y": 2266.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
@@ -1667,15 +1715,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10675,
+						"buffer_size": 11110,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9949,
-								9949
+								9856,
+								9856
 							]
 						],
 						"settings":
@@ -1683,11 +1731,11 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 4191.0,
+						"translation.x": 1167.0,
+						"translation.y": 4130.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1716,7 +1764,7 @@
 						"translation.y": 2435.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1725,15 +1773,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12780,
+						"buffer_size": 12903,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10363,
-								10363
+								6784,
+								6784
 							]
 						],
 						"settings":
@@ -1742,10 +1790,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5330.0,
+						"translation.y": 3246.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1754,15 +1802,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10824,
+						"buffer_size": 10947,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6759,
-								6759
+								4113,
+								4016
 							]
 						],
 						"settings":
@@ -1771,14 +1819,159 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3179.0,
+						"translation.y": 1913.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
 					"buffer": 24,
+					"file": "src/routes/ConsultantsRoute.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7547,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7334,
+								7334
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 57.0,
+						"translation.y": 2757.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "src/components/EditConsultantDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7114,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4376,
+								4376
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 79.0,
+						"translation.y": 1894.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"file": "src/routes/CustomersRoute.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8123,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2498,
+								2498
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 935.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "src/components/SeeCustomerDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5558,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5171,
+								5171
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 58.0,
+						"translation.y": 2240.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 28,
+					"file": "src/components/AddConsultantDialog.jsx",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5748,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4408,
+								4408
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 503.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 29,
 					"file": "src/components/AddCityDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1803,11 +1996,11 @@
 						"translation.y": 1013.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 30,
 					"file": "src/routes/CategoriesRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1832,11 +2025,11 @@
 						"translation.y": 2885.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 29,
 					"type": "text"
 				},
 				{
-					"buffer": 26,
+					"buffer": 31,
 					"file": "src/components/AddCategoryDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1861,24 +2054,24 @@
 						"translation.y": 1062.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 28,
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 32,
 					"file": "src/components/EditCategoryDialog.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7451,
+						"buffer_size": 7499,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7019,
-								7101
+								4343,
+								4343
 							]
 						],
 						"settings":
@@ -1886,15 +2079,15 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 3372.0,
+						"translation.x": 65.0,
+						"translation.y": 1845.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 28,
+					"buffer": 33,
 					"file": "src/routes/SizesRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1919,11 +2112,11 @@
 						"translation.y": 2630.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
-					"buffer": 29,
+					"buffer": 34,
 					"file": "src/components/AddSizeDialog.jsx",
 					"semi_transient": false,
 					"settings":
@@ -1948,24 +2141,24 @@
 						"translation.y": 1797.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 27,
 					"type": "text"
 				},
 				{
-					"buffer": 30,
+					"buffer": 35,
 					"file": "src/components/EditSizeDialog.jsx",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6105,
+						"buffer_size": 6145,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4023,
-								4023
+								1369,
+								1206
 							]
 						],
 						"settings":
@@ -1974,14 +2167,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1752.0,
+						"translation.y": 345.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 31,
+					"buffer": 36,
 					"file": "src/routes/PainelRoute.jsx",
 					"semi_transient": false,
 					"settings":
@@ -2007,7 +2200,7 @@
 						"translation.y": 116.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 25,
 					"type": "text"
 				}
 			]
@@ -2094,7 +2287,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 232.0,
+	"side_bar_width": 234.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

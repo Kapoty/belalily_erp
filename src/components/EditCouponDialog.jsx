@@ -203,6 +203,10 @@ class EditCouponDialog extends React.Component {
 							input = 'code';
 							message = 'Cupom já cadastrado'
 						break;
+						case 'code invalid':
+							input = 'code';
+							message = 'Código inválido (somente números/letras)'
+						break;
 						case 'type invalid':
 							input = 'type';
 							message = 'Tipo inválido'

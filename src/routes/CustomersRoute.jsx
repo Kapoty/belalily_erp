@@ -20,13 +20,12 @@ import Paper from '@material-ui/core/Paper';
 import LockIcon from '@material-ui/icons/Lock';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import EditIcon from '@material-ui/icons/Edit';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import Button from '@material-ui/core/Button';
-import AddDistrictDialog from '../components/AddDistrictDialog';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import Grid from '@material-ui/core/Grid';
-import EditDistrictDialog from '../components/EditDistrictDialog';
+import SeeCustomerDialog from '../components/SeeCustomerDialog';
 import TextField from '@material-ui/core/TextField';
 import Pagination from '@material-ui/lab/Pagination';
 
@@ -73,13 +72,12 @@ const useStyles = (theme) => ({
 	}
 });
 
-class DistrictsRoute extends React.Component {
+class CustomersRoute extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			districtsLoaded: false, districts: [],
-			citiesLoaded: false, cities: [], citiesById: {},
+			customersLoaded: false, customers: [],
 			trying: false,
 			errorInput: '', errorMessage: '',
 			action: '', actionInfo: {},
@@ -92,25 +90,22 @@ class DistrictsRoute extends React.Component {
 				count: 0,
 			}
 		}
-		this.getCities = this.getCities.bind(this);
-		this.getDistricts = this.getDistricts.bind(this);
+		this.getCustomers = this.getCustomers.bind(this);
 		this.handleDialogClose = this.handleDialogClose.bind(this);
-		this.handleDeleteDistrict = this.handleDeleteDistrict.bind(this);
-		this.handleEditDistrict = this.handleEditDistrict.bind(this);
+		this.handleSeeCustomer = this.handleSeeCustomer.bind(this);
 		this.handleFilter = this.handleFilter.bind(this);
 	}
 
 	componentDidMount() {
-		this.getDistricts();
-		this.getCities();
+		this.getCustomers();
 	}
 
-	getDistricts() {
+	getCustomers() {
 		if (cookies.get('user-token') == null) {
 			this.props.history.push('/');
 			return;
 		}
-		fetch(Config.apiURL + "districts/with-filter", {
+		fetch(Config.apiURL + "customers/with-filter", {
 			method: "POST",
 			body: JSON.stringify({
 				text: this.state.filter.text,
@@ -128,10 +123,10 @@ class DistrictsRoute extends React.Component {
 				} else if ('error' in data)
 					this.props.history.push('/painel');
 				else {
-					let count = Math.ceil(data.districts.length / this.state.pagination.rowsPerPage);
+					let count = Math.ceil(data.customers.length / this.state.pagination.rowsPerPage);
 					this.setState({
-						districtsLoaded: true,
-						districts: data.districts,
+						customersLoaded: true,
+						customers: data.customers,
 						pagination: {
 							...this.state.pagination,
 							count: count,
@@ -142,97 +137,25 @@ class DistrictsRoute extends React.Component {
 			})
 		})
 		.catch((e) => {
-			setTimeout(this.getDistricts, 5000);
-			console.log(e);
-		});
-	}
-
-	getCities() {
-		if (cookies.get('user-token') == null) {
-			this.props.history.push('/');
-			return;
-		}
-		fetch(Config.apiURL + "cities/module", {
-			method: "GET",
-			headers: { 
-			"Content-type": "application/json; charset=UTF-8",
-			"x-user-token": cookies.get('user-token'),
-			} 
-		})
-		.then((resp) => {
-			resp.json().then((data) => {
-				if ('auth' in data) {
-					cookies.remove('user-token');
-					this.props.history.push('/');
-				} else if ('error' in data)
-					this.props.history.push('/painel');
-				else {
-					let citiesById = {}
-					data.cities.forEach((city) => citiesById[city.id] = city)
-					this.setState({citiesLoaded: true, cities: data.cities, citiesById: citiesById});
-				}
-			})
-		})
-		.catch((e) => {
-			setTimeout(this.getCities, 5000);
+			setTimeout(this.getCustomers, 5000);
 			console.log(e);
 		});
 	}
 
 	handleDialogClose() {
-		this.setState({districtsLoaded: false, citiesLoaded: false, action: ''});
-		this.getDistricts();
-		this.getCities();
+		this.setState({customersLoaded: false, action: ''});
+		this.getCustomers();
 	}
 
-	handleDeleteDistrict(districtId) {
-		if (window.confirm(`Deseja realmente deletar o bairro id ${districtId}?`)) {
-			this.setState({trying: true});
-			fetch(Config.apiURL + "districts/" + districtId, {
-				method: "DELETE",
-				headers: { 
-					"Content-type": "application/json; charset=UTF-8",
-					"x-user-token": cookies.get('user-token'),
-				} 
-			})
-			.then((resp) => {
-				resp.json().then((data) => {
-					if ('auth' in data) {
-						cookies.remove('user-token');
-						this.props.history.push('/');
-					} else if ('error' in data) {
-						let input = '', message = '';
-						switch(data.error) {
-							default:
-								input = 'error';
-								message = 'Erro inesperado: '+data.error;
-						}
-						this.setState({trying: false, errorInput: input, errorMessage: message});
-					}
-					else {
-						this.setState({trying: false, errorInput: 'success', errorMessage: 'Bairro deletado!', districtsLoaded: false, citiesLoaded: false});
-						this.getDistricts();
-						this.getCities();
-					}
-				})
-			})
-			.catch((e) => {
-				setTimeout(() => this.handleDeleteDistrict(districtId), 5000);
-				console.log(e);
-			});	
-		}
-	}
-
-	handleEditDistrict(districtId) {
-		this.setState({action: 'edit district', actionInfo: {districtId: districtId}});
+	handleSeeCustomer(customerId) {
+		this.setState({action: 'see customer', actionInfo: {customerId: customerId}});
 	}
 
 	handleFilter(e) {
 		if (e != undefined)
 			e.preventDefault();
-		this.setState({districtsLoaded: false, citiesLoaded: false});
-		this.getDistricts();
-		this.getCities();
+		this.setState({customersLoaded: false});
+		this.getCustomers();
 	}
 
 	render() {
@@ -242,7 +165,7 @@ class DistrictsRoute extends React.Component {
 					<CustomAppBar history={this.props.history} location={this.props.location}/>
 					<div className={classes.root}>
 						<Typography variant="h4" align='center' gutterBottom style={{width: '100%'}}>
-							Bairros
+							Clientes
 						</Typography>
 						<form action="#" onSubmit={this.handleFilter} autoComplete="on" style={{width: '100%'}}>
 							<Paper className={classes.filterPaper}>
@@ -251,11 +174,11 @@ class DistrictsRoute extends React.Component {
 									onChange={(e) => this.setState({filter: {...this.state.filter, text: e.target.value}})}
 									margin="normal"
 									id="filterText"
-									label="Nome ou ID"
+									label="Nome, CPF ou ID"
 									value={this.state.filter.text}
 									InputProps={{
 										inputProps: {
-											maxLength: 30
+											maxLength: 50
 										}
 									}}
 									disabled={this.state.trying}
@@ -265,30 +188,25 @@ class DistrictsRoute extends React.Component {
 							<input type="submit" style={{display: 'none'}}/>
 						</form>
 						<TableContainer component={Paper}>
-							{(this.state.districtsLoaded && this.state.citiesLoaded) ? <React.Fragment>
+							{(this.state.customersLoaded) ? <React.Fragment>
 								<Table aria-label="spanning table" size="small">
 									<TableHead>
 										<TableRow>
 											<TableCell>ID</TableCell>
 											<TableCell align="right">Nome</TableCell>
-											<TableCell align="right">Cidade</TableCell>
+											<TableCell align="right">CPF</TableCell>
 											<TableCell align="right">Ações</TableCell>
 										</TableRow>
 									</TableHead>
 									<TableBody>
-										{this.state.districts.map((district, i) => (i>=(this.state.pagination.page-1) * this.state.pagination.rowsPerPage && i<=this.state.pagination.page * this.state.pagination.rowsPerPage - 1) ? <TableRow key={district.id}>
-											<TableCell>{district.id}</TableCell>
-											<TableCell align="right">{district.name}</TableCell>
-											<TableCell align="right">{this.state.citiesById[district.city_id].name + ' - ' + this.state.citiesById[district.city_id].uf}</TableCell>
+										{this.state.customers.map((customer, i) => (i>=(this.state.pagination.page-1) * this.state.pagination.rowsPerPage && i<=this.state.pagination.page * this.state.pagination.rowsPerPage - 1) ? <TableRow key={customer.id}>
+											<TableCell>{customer.id}</TableCell>
+											<TableCell align="right">{customer.name}</TableCell>
+											<TableCell align="right">{customer.cpf}</TableCell>
 											<TableCell align="right">
-												<Tooltip title="Editar" aria-label="Editar">
-													<IconButton color="inherit" aria-label="Editar" onClick={() => this.handleEditDistrict(district.id)} disabled={this.state.trying}>
-														<EditIcon />
-													</IconButton>
-												</Tooltip>
-												<Tooltip title="Apagar Bairro" aria-label="Apagar Bairro">
-													<IconButton color="inherit" aria-label="Apagar Bairro" onClick={() => this.handleDeleteDistrict(district.id)} disabled={this.state.trying}>
-														<DeleteForeverIcon />
+												<Tooltip title="Ver" aria-label="Ver">
+													<IconButton color="inherit" aria-label="Ver" onClick={() => this.handleSeeCustomer(customer.id)} disabled={this.state.trying}>
+														<VisibilityIcon />
 													</IconButton>
 												</Tooltip>
 											</TableCell>
@@ -299,7 +217,7 @@ class DistrictsRoute extends React.Component {
 						</TableContainer>
 						<div className={classes.paginationArea}>
 							<Pagination count={this.state.pagination.count} page={this.state.pagination.page} onChange={(e, newValue) => this.setState({pagination: {...this.state.pagination, page: newValue}})} />
-							<Typography variant='caption'>Mostrando {(this.state.pagination.page-1) * this.state.pagination.rowsPerPage + 1}-{Math.min(this.state.pagination.page * this.state.pagination.rowsPerPage, this.state.districts.length)} de {this.state.districts.length}</Typography>
+							<Typography variant='caption'>Mostrando {(this.state.pagination.page-1) * this.state.pagination.rowsPerPage + 1}-{Math.min(this.state.pagination.page * this.state.pagination.rowsPerPage, this.state.customers.length)} de {this.state.customers.length}</Typography>
 						</div>
 						<Grid container spacing={1}>
 							<Grid item xs={12}>
@@ -313,15 +231,14 @@ class DistrictsRoute extends React.Component {
 									</Alert> : ''}
 							</Grid>
 						</Grid>
-						<div className={classes.actions}>
-							<Button variant="contained" color="primary" disabled={this.state.trying} onClick={() => this.setState({action: 'add district'})}>Adicionar Bairro</Button>
-						</div>
-						{(this.state.action == 'add district') ? <AddDistrictDialog handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
-						{(this.state.action == 'edit district') ? <EditDistrictDialog districtId={this.state.actionInfo.districtId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
+						{/*<div className={classes.actions}>
+							
+						</div>*/}
+						{(this.state.action == 'see customer') ? <SeeCustomerDialog customerId={this.state.actionInfo.customerId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
 					</div>
 		</React.Fragment>
 	}
 
 }
 
-export default withStyles(useStyles)(DistrictsRoute)
+export default withStyles(useStyles)(CustomersRoute)

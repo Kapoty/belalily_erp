@@ -11,6 +11,8 @@ import SizesRoute from "routes/SizesRoute";
 import CitiesRoute from "routes/CitiesRoute";
 import DistrictsRoute from "routes/DistrictsRoute";
 import CouponsRoute from "routes/CouponsRoute";
+import ConsultantsRoute from "routes/ConsultantsRoute";
+import CustomersRoute from "routes/CustomersRoute";
 import { useHistory } from 'react-router';
 import 'assets/css/general.css';
 
@@ -56,6 +58,8 @@ class SiteRouter extends React.Component {
                               <Route path="/cidades" exact component={CitiesRoute} />
                               <Route path="/bairros" exact component={DistrictsRoute} />
                               <Route path="/cupons" exact component={CouponsRoute} />
+                              <Route path="/consultores" exact component={ConsultantsRoute} />
+                              <Route path="/clientes" exact component={CustomersRoute} />
                         	</Switch>
                         </div>
                      </MuiPickersUtilsProvider>

@@ -149,7 +149,8 @@ class AddCategoryDialog extends React.Component {
 					this.setState({trying: false, errorInput: input, errorMessage: message});
 				}
 				else {
-					this.setState({trying: false, errorInput: 'success', errorMessage: 'Categoria atualizada!'});
+					this.setState({trying: false, errorInput: 'success', errorMessage: 'Categoria atualizada!', categoryLoaded: false});
+					this.getCategory();
 				}
 			})
 		})
