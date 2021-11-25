@@ -34,6 +34,8 @@ import EditProductSizesDialog from '../components/EditProductSizesDialog';
 import HeightIcon from '@material-ui/icons/Height';
 import EditProductImagesDialog from '../components/EditProductImagesDialog';
 import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary';
+import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
+import EditProductInventoryDialog from '../components/EditProductInventoryDialog';
 
 const useStyles = (theme) => ({
 	root: {
@@ -75,6 +77,7 @@ class ProductsRoute extends React.Component {
 		super(props);
 		this.state = {
 			productsLoaded: false, products: [],
+			profileLoaded: false, profile: {},
 			trying: false,
 			errorInput: '', errorMessage: '',
 			action: '', actionInfo: {},
@@ -89,10 +92,13 @@ class ProductsRoute extends React.Component {
 		this.handleFilter = this.handleFilter.bind(this);
 		this.handleEditProductCategories = this.handleEditProductCategories.bind(this);
 		this.handleEditProductSizes = this.handleEditProductSizes.bind(this);
+		this.handleEditProductInventory = this.handleEditProductInventory.bind(this);
+		this.getUserProfile = this.getUserProfile.bind(this);
 	}
 
 	componentDidMount() {
 		this.getProducts();
+		this.getUserProfile();
 	}
 
 	getProducts() {
@@ -124,6 +130,34 @@ class ProductsRoute extends React.Component {
 		})
 		.catch((e) => {
 			setTimeout(this.getProducts, 5000);
+			console.log(e);
+		});
+	}
+
+	getUserProfile() {
+		if (cookies.get('user-token') == null) {
+			this.props.history.push('/');
+			return;
+		}
+		fetch(Config.apiURL + "users/me/profile", {
+			method: "GET",
+			headers: { 
+			"Content-type": "application/json; charset=UTF-8",
+			"x-user-token": cookies.get('user-token'),
+			} 
+		})
+		.then((resp) => {
+			resp.json().then((data) => {
+				if ('auth' in data) {
+					cookies.remove('user-token');
+					this.props.history.push('/');
+				}
+				else
+					this.setState({profileLoaded: true, profile: data.profile});
+			})
+		})
+		.catch((e) => {
+			setTimeout(this.getUserProfile, 5000);
 			console.log(e);
 		});
 	}
@@ -193,6 +227,10 @@ class ProductsRoute extends React.Component {
 		this.setState({action: 'edit product images', actionInfo: {productId: productId}});
 	}
 
+	handleEditProductInventory(productId) {
+		this.setState({action: 'edit product inventory', actionInfo: {productId: productId}});
+	}
+
 	render() {
 		const { classes } = this.props;
 
@@ -259,6 +297,11 @@ class ProductsRoute extends React.Component {
 														<PhotoLibraryIcon />
 													</IconButton>
 												</Tooltip>
+												{(this.state.profileLoaded && this.state.profile['product_inventory_module']) ? <Tooltip title="Estoque" aria-label="Estoque">
+													<IconButton color="inherit" aria-label="Estoque" onClick={() => this.handleEditProductInventory(product.id)} disabled={this.state.trying}>
+														<HorizontalSplitIcon />
+													</IconButton>
+												</Tooltip> : ''}
 												<Tooltip title="Apagar Produto" aria-label="Apagar Produto">
 													<IconButton color="inherit" aria-label="Apagar Produto" onClick={() => this.handleDeleteProduct(product.id)} disabled={this.state.trying}>
 														<DeleteForeverIcon />
@@ -290,6 +333,7 @@ class ProductsRoute extends React.Component {
 						{(this.state.action == 'edit product categories') ? <EditProductCategoriesDialog productId={this.state.actionInfo.productId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
 						{(this.state.action == 'edit product sizes') ? <EditProductSizesDialog productId={this.state.actionInfo.productId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
 						{(this.state.action == 'edit product images') ? <EditProductImagesDialog productId={this.state.actionInfo.productId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
+						{(this.state.action == 'edit product inventory') ? <EditProductInventoryDialog productId={this.state.actionInfo.productId} handleDialogClose={this.handleDialogClose} history={this.props.history}/> : ''}
 					</div>
 		</React.Fragment>
 	}

@@ -61,7 +61,7 @@ class CustomAppBar extends React.Component {
 			{name: 'Produtos', link: '/produtos', requirement: 'products_module', iconComponent: ViewModuleIcon},
 			{name: 'Categorias', link: '/categorias', requirement: 'product_categories_module', iconComponent: ViewColumnIcon},
 			{name: 'Tamanhos', link: '/tamanhos', requirement: 'sizes_module', iconComponent: HeightIcon},
-			{name: 'Estoque', link: '/estoque', requirement: 'product_inventory_module', iconComponent: HorizontalSplitIcon},
+			//{name: 'Estoque', link: '/estoque', requirement: 'product_inventory_module', iconComponent: HorizontalSplitIcon},
 			{name: 'Clientes', link: '/clientes', requirement: 'customers_module', iconComponent: FaceIcon},
 			{name: 'Pedidos', link: '/pedidos', requirement: 'orders_module', iconComponent: ViewListIcon},
 			{name: 'Cidades', link: '/cidades', requirement: 'cities_module', iconComponent: LocationCityIcon},

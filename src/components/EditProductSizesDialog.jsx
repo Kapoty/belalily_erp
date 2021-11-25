@@ -35,6 +35,14 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = (theme) => ({
+	progressArea: {
+		display: 'flex',
+		width: '100%',
+		alignItems: 'center',
+		justifyContent: 'center',
+		padding: theme.spacing(1),
+		boxSizing: 'border-box',
+	},
 	addPaper: {
 		minWidth: '300px',
 		width: '100%',
