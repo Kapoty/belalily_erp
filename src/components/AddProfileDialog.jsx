@@ -46,6 +46,9 @@ class AddProfileDialog extends React.Component {
 			product_inventory_module: false,
 			customers_module: false,
 			orders_module: false,
+			change_order_status: false,
+			change_order_payment_status: false,
+			change_order_shipping_status: false,
 			cities_module: false,
 			districts_module: false,
 			coupons_module: false,
@@ -80,6 +83,9 @@ class AddProfileDialog extends React.Component {
 				product_inventory_module: this.state.product_inventory_module,
 				customers_module: this.state.customers_module,
 				orders_module: this.state.orders_module,
+				change_order_status: this.state.change_order_status,
+				change_order_payment_status: this.state.change_order_payment_status,
+				change_order_shipping_status: this.state.change_order_shipping_status,
 				cities_module: this.state.cities_module,
 				districts_module: this.state.districts_module,
 				coupons_module: this.state.coupons_module,
@@ -238,6 +244,36 @@ class AddProfileDialog extends React.Component {
 									onChange={(e, newValue) => this.setState({orders_module: newValue})}
 									control={<Switch color="primary" checked={this.state.orders_module}/>}
 									label="Módulo de Pedidos"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.change_order_status}
+									onChange={(e, newValue) => this.setState({change_order_status: newValue})}
+									control={<Switch color="primary" checked={this.state.change_order_status}/>}
+									label="Alterar Status de Pedido"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.change_order_payment_status}
+									onChange={(e, newValue) => this.setState({change_order_payment_status: newValue})}
+									control={<Switch color="primary" checked={this.state.change_order_payment_status}/>}
+									label="Alterar Status de Pagamento de Pedido"
+									labelPlacement="start"
+									disabled={this.state.trying}
+								/>
+							</Grid>
+							<Grid item xs={6}>
+								<FormControlLabel
+									value={this.state.change_order_shipping_status}
+									onChange={(e, newValue) => this.setState({change_order_shipping_status: newValue})}
+									control={<Switch color="primary" checked={this.state.change_order_shipping_status}/>}
+									label="Alterar Status de Entrega de Pedido"
 									labelPlacement="start"
 									disabled={this.state.trying}
 								/>

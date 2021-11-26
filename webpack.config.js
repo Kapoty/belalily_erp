@@ -40,7 +40,7 @@ module.exports = {
     	new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
         	"template": 'src/index.html',
-        	"title": "Bela Lily",
+        	"title": "Bela Lily - Área Restrita",
             "hash": true,
             "chunks": ["app"],
             "path": __dirname+'/static',

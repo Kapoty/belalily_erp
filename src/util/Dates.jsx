@@ -7,4 +7,11 @@ function toDateAndTime(dateStr) {
 	return date.toLocaleDateString('pt-BR') + ` ${String(date.getHours()).padStart(2, '0')}h${String(date.getMinutes()).padStart(2, '0')}m${String(date.getSeconds()).padStart(2, '0')}s`;
 }
 
-export {toDate, toDateAndTime}
+function toAge(dateStr) {
+	let birthday_date = new Date(dateStr);
+	let today_date = new Date();
+	let age = Math.floor((today_date - birthday_date.getTime()) / 3.15576e+10);
+	return age + ' anos';
+}
+
+export {toDate, toDateAndTime, toAge}
