@@ -123,7 +123,7 @@ class AddDistrictDialog extends React.Component {
 						break;
 						case 'name too long':
 							input = 'name';
-							message = 'Nome muito longo (max. 30)'
+							message = 'Nome muito longo (max. 70)'
 						break;
 						case 'name duplicate':
 							input = 'name';
@@ -139,7 +139,7 @@ class AddDistrictDialog extends React.Component {
 						break;
 						case 'api_name too long':
 							input = 'api_name';
-							message = 'Nome muito longo (max. 30)'
+							message = 'Nome muito longo (max. 70)'
 						break;
 						case 'shipping_normal_price invalid':
 							input = 'shipping_normal_price';
@@ -188,7 +188,7 @@ class AddDistrictDialog extends React.Component {
 									value={this.state.name}
 									InputProps={{
 										inputProps: {
-											maxLength: 30
+											maxLength: 70
 										}
 									}}
 									disabled={this.state.trying}
@@ -221,7 +221,7 @@ class AddDistrictDialog extends React.Component {
 									value={this.state.api_name}
 									InputProps={{
 										inputProps: {
-											maxLength: 30
+											maxLength: 70
 										}
 									}}
 									disabled={this.state.trying}

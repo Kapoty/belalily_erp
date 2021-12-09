@@ -51,6 +51,7 @@ class EditCouponDialog extends React.Component {
 			minimum_amount: 0,
 			max_uses: 0,
 			max_units: 0,
+			single_use: false,
 			consultant: null,
 			consultantsLoaded: false,
 			consultants: [],
@@ -118,6 +119,7 @@ class EditCouponDialog extends React.Component {
 						minimum_amount: data.coupon.minimum_amount,
 						max_uses: data.coupon.max_uses,
 						max_units: data.coupon.max_units,
+						single_use: data.coupon.single_use,
 					});
 				}
 			})
@@ -177,6 +179,7 @@ class EditCouponDialog extends React.Component {
 				max_uses: parseInt(this.state.max_uses),
 				max_units: parseInt(this.state.max_units),
 				consultant_id: (this.state.consultant != null) ? this.state.consultant.id : null,
+				single_use: this.state.single_use,
 			}),
 			headers: { 
 				"Content-type": "application/json; charset=UTF-8",
@@ -370,6 +373,16 @@ class EditCouponDialog extends React.Component {
 										disabled={this.state.trying}
 										error={this.state.errorInput == 'max_units'}
 										helperText={(this.state.errorInput == 'max_units') ? this.state.errorMessage : ''}
+									/>
+								</Grid>
+								<Grid item xs={6}>
+									<FormControlLabel
+										value={this.state.single_use}
+										onChange={(e, newValue) => this.setState({single_use: newValue})}
+										control={<Switch color="primary" checked={this.state.single_use}/>}
+										label="Uso Único"
+										labelPlacement="start"
+										disabled={this.state.trying}
 									/>
 								</Grid>
 								<Grid item xs={12} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
