@@ -1,10 +1,10 @@
 function toDate(dateStr) {
-	return new Date(dateStr).toLocaleDateString('pt-BR');
+	return new Date(dateStr).toLocaleDateString('pt-BR', {timeZone: 'UTC'});
 }
 
 function toDateAndTime(dateStr) {
 	let date = new Date(dateStr);
-	return date.toLocaleDateString('pt-BR') + ` ${String(date.getHours()).padStart(2, '0')}h${String(date.getMinutes()).padStart(2, '0')}m${String(date.getSeconds()).padStart(2, '0')}s`;
+	return date.toLocaleDateString('pt-BR', {timeZone: 'UTC'}) + ` ${String(date.getHours()).padStart(2, '0')}h${String(date.getMinutes()).padStart(2, '0')}m${String(date.getSeconds()).padStart(2, '0')}s`;
 }
 
 function toAge(dateStr) {

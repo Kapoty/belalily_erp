@@ -89,7 +89,7 @@ class AddProductDialog extends React.Component {
 						break;
 						case 'name too long':
 							input = 'name';
-							message = 'Nome muito longo (max. 30)'
+							message = 'Nome muito longo (max. 50)'
 						break;
 						case 'price invalid':
 							input = 'price';
@@ -142,7 +142,7 @@ class AddProductDialog extends React.Component {
 									value={this.state.name}
 									InputProps={{
 										inputProps: {
-											maxLength: 30
+											maxLength: 50
 										}
 									}}
 									disabled={this.state.trying}
